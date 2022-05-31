@@ -44,7 +44,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -233,7 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -271,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/OGGM/oggm-edu-notebooks-es/master?urlpath=lab/tree/./oggm-edu-es/temperature_index_model_es.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/OGGM/binder/stable?urlpath=git-pull%3Frepo=https://github.com/OGGM/oggm-edu-notebooks-es%26urlpath%3Dlab%252Ftree%252Foggm-edu-notebooks-es/./oggm-edu-es/temperature_index_model_es.ipynb%26branch%3Dmaster"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -292,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -361,79 +361,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Modelos de índice de temperatura</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fondo">
-   Fondo
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#configuracion-del-modelo">
-   Configuración del modelo
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#grados-de-libertad">
-     Grados de libertad
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementacion-en-oggm">
-   Implementación en OGGM
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datos-climaticos">
-     Datos climáticos
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datos-de-balance-de-masa-de-referencia">
-     Datos de balance de masa de referencia
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prediga-el-balance-de-masa">
-     ¡Prediga el balance de masa!
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#llevate-puntos-a-casa">
-   Llévate puntos a casa
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#referencias">
-   Referencias
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#que-sigue">
-   ¿Que sigue?
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="modelos-de-indice-de-temperatura">
@@ -467,9 +395,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 15:45:55: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
-2022-05-31 15:45:55: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
-2022-05-31 15:45:55: oggm.cfg: Multiprocessing: using all available processors (N=8)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 14:26:41: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
+2022-05-31 14:26:41: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
+2022-05-31 14:26:41: oggm.cfg: Multiprocessing: using all available processors (N=2)
 </pre></div>
 </div>
 </div>
@@ -489,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 15:45:56: oggm.cfg: PARAMS[&#39;border&#39;] changed from `40` to `10`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 14:26:41: oggm.cfg: PARAMS[&#39;border&#39;] changed from `40` to `10`.
 </pre></div>
 </div>
 </div>
@@ -562,9 +490,10 @@ T_melt = -1.0°C
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 15:45:56: oggm.workflow: init_glacier_directories from prepro level 3 on 1 glaciers.
-2022-05-31 15:45:56: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 1 glaciers
-2022-05-31 15:45:56: oggm.utils: /home/mowglie/disk/OGGM_INPUT/download_cache/cluster.klima.uni-bremen.de/~oggm/gdirs/oggm_v1.4/L3-L5_files/CRU/centerlines/qc3/pcp2.5/no_match/RGI62/b_010/L3/RGI60-11/RGI60-11.00.tar verified successfully.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 14:26:42: oggm.workflow: init_glacier_directories from prepro level 3 on 1 glaciers.
+2022-05-31 14:26:42: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 1 glaciers
+2022-05-31 14:26:42: oggm.utils: Downloading https://cluster.klima.uni-bremen.de/~oggm/gdirs/oggm_v1.4/L3-L5_files/CRU/centerlines/qc3/pcp2.5/no_match/RGI62/b_010/L3/RGI60-11/RGI60-11.00.tar to /github/home/OGGM/download_cache/cluster.klima.uni-bremen.de/~oggm/gdirs/oggm_v1.4/L3-L5_files/CRU/centerlines/qc3/pcp2.5/no_match/RGI62/b_010/L3/RGI60-11/RGI60-11.00.tar...
+2022-05-31 14:26:45: oggm.utils: /github/home/OGGM/download_cache/cluster.klima.uni-bremen.de/~oggm/gdirs/oggm_v1.4/L3-L5_files/CRU/centerlines/qc3/pcp2.5/no_match/RGI62/b_010/L3/RGI60-11/RGI60-11.00.tar verified successfully.
 </pre></div>
 </div>
 </div>
@@ -1037,12 +966,12 @@ Attributes:
     hydro_yr_0:      1902
     hydro_yr_1:      2019
     author:          OGGM
-    author_info:     Open Global Glacier Model</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-4c557a0e-2c71-48c2-a6b7-fd95b8a42a7f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-4c557a0e-2c71-48c2-a6b7-fd95b8a42a7f' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 1416</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-7c2a2f7a-8c93-4a7d-829e-82528d15711d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7c2a2f7a-8c93-4a7d-829e-82528d15711d' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1901-10-01 ... 2019-09-01</div><input id='attrs-042d21a2-1306-45bf-abc0-a281cc5a7274' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-042d21a2-1306-45bf-abc0-a281cc5a7274' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-751003d7-e71f-4d4c-b2dd-1c385bca423d' class='xr-var-data-in' type='checkbox'><label for='data-751003d7-e71f-4d4c-b2dd-1c385bca423d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1901-10-01T00:00:00.000000000&#x27;, &#x27;1901-11-01T00:00:00.000000000&#x27;,
+    author_info:     Open Global Glacier Model</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-daab8b32-5fb8-4371-8a0c-83ce44b51d6d' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-daab8b32-5fb8-4371-8a0c-83ce44b51d6d' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 1416</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-33035f6d-241c-4bf8-85e4-b7776b437f4c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-33035f6d-241c-4bf8-85e4-b7776b437f4c' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1901-10-01 ... 2019-09-01</div><input id='attrs-e53060a9-7868-415f-ace1-2d49d1244d93' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e53060a9-7868-415f-ace1-2d49d1244d93' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8f1b159c-b24a-4273-bc67-2c71531ac3a4' class='xr-var-data-in' type='checkbox'><label for='data-8f1b159c-b24a-4273-bc67-2c71531ac3a4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1901-10-01T00:00:00.000000000&#x27;, &#x27;1901-11-01T00:00:00.000000000&#x27;,
        &#x27;1901-12-01T00:00:00.000000000&#x27;, ..., &#x27;2019-07-01T00:00:00.000000000&#x27;,
        &#x27;2019-08-01T00:00:00.000000000&#x27;, &#x27;2019-09-01T00:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a069f05b-0639-479a-a6ed-87c4b68f70a1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a069f05b-0639-479a-a6ed-87c4b68f70a1' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>prcp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fa798f01-620d-4a71-877a-45292aad7676' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fa798f01-620d-4a71-877a-45292aad7676' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0f2aced5-84e2-4825-b2bd-9ec5819728c1' class='xr-var-data-in' type='checkbox'><label for='data-0f2aced5-84e2-4825-b2bd-9ec5819728c1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>kg m-2</dd><dt><span>long_name :</span></dt><dd>total monthly precipitation amount</dd></dl></div><div class='xr-var-data'><pre>array([109.8849 ,  63.25953, 175.92877, ..., 121.19765, 187.73975, 114.17238],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>temp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-8fbf0b86-2bef-489d-ae05-939904fa79cb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8fbf0b86-2bef-489d-ae05-939904fa79cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9d3ae9be-281f-4456-9eaf-58547976116d' class='xr-var-data-in' type='checkbox'><label for='data-9d3ae9be-281f-4456-9eaf-58547976116d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degC</dd><dt><span>long_name :</span></dt><dd>2m temperature at height ref_hgt</dd></dl></div><div class='xr-var-data'><pre>array([-0.773333, -6.976667, -7.38    , ...,  8.193335,  7.52    ,  4.213333],
-      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c88d3240-fdea-4def-bfc7-60d2360e5320' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c88d3240-fdea-4def-bfc7-60d2360e5320' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ref_hgt :</span></dt><dd>2700.0</dd><dt><span>ref_pix_lon :</span></dt><dd>10.75</dd><dt><span>ref_pix_lat :</span></dt><dd>46.750000000000014</dd><dt><span>ref_pix_dis :</span></dt><dd>5629.5667533869655</dd><dt><span>climate_source :</span></dt><dd>CRU TS4.04</dd><dt><span>hydro_yr_0 :</span></dt><dd>1902</dd><dt><span>hydro_yr_1 :</span></dt><dd>2019</dd><dt><span>author :</span></dt><dd>OGGM</dd><dt><span>author_info :</span></dt><dd>Open Global Glacier Model</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-04c2e613-2e12-449b-89b4-5172706fe221' class='xr-section-summary-in' type='checkbox'  checked><label for='section-04c2e613-2e12-449b-89b4-5172706fe221' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>prcp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5b67e371-2606-4747-848a-b2dacd440612' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5b67e371-2606-4747-848a-b2dacd440612' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3799d2a0-ed54-4a91-8f4c-b190738dd40a' class='xr-var-data-in' type='checkbox'><label for='data-3799d2a0-ed54-4a91-8f4c-b190738dd40a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>kg m-2</dd><dt><span>long_name :</span></dt><dd>total monthly precipitation amount</dd></dl></div><div class='xr-var-data'><pre>array([109.8849 ,  63.25953, 175.92877, ..., 121.19765, 187.73975, 114.17238],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>temp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-720b6ff8-288d-43a8-9e30-a44dae620b5b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-720b6ff8-288d-43a8-9e30-a44dae620b5b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-347b96a5-f1cd-4a21-9379-18b458dc354b' class='xr-var-data-in' type='checkbox'><label for='data-347b96a5-f1cd-4a21-9379-18b458dc354b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degC</dd><dt><span>long_name :</span></dt><dd>2m temperature at height ref_hgt</dd></dl></div><div class='xr-var-data'><pre>array([-0.773333, -6.976667, -7.38    , ...,  8.193335,  7.52    ,  4.213333],
+      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f86565c1-ca9e-48d5-b98d-f00e79d126a0' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f86565c1-ca9e-48d5-b98d-f00e79d126a0' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ref_hgt :</span></dt><dd>2700.0</dd><dt><span>ref_pix_lon :</span></dt><dd>10.75</dd><dt><span>ref_pix_lat :</span></dt><dd>46.750000000000014</dd><dt><span>ref_pix_dis :</span></dt><dd>5629.5667533869655</dd><dt><span>climate_source :</span></dt><dd>CRU TS4.04</dd><dt><span>hydro_yr_0 :</span></dt><dd>1902</dd><dt><span>hydro_yr_1 :</span></dt><dd>2019</dd><dt><span>author :</span></dt><dd>OGGM</dd><dt><span>author_info :</span></dt><dd>Open Global Glacier Model</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>El conjunto de datos climáticos tiene dos variables, la precipitación total mensual <code class="docutils literal notranslate"><span class="pre">prcp</span></code> y la temperatura media mensual <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Calculemos el ciclo medio anual de temperatura media y precipitación total,</p>
 <div class="cell docutils container">
@@ -1249,8 +1178,8 @@ Attributes:
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="surging_experiment_es.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1267,24 +1196,26 @@ Attributes:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By OGGM e.V. y contribudores OGGM<br/>
-    
-      <div class="extra_footer">
-        <p>
+    <div class="container">
+      <p>
+        
+          By OGGM e.V. y contribudores OGGM<br/>
+        
+          <div class="extra_footer">
+            <p>
 These notebooks are licensed under a <a href="https://github.com/OGGM/tutorials/blob/master/LICENSE.txt" target="_blank">BSD-3-Clause license</a>.
 <br>
 &copy; Copyright 2014-2022.
 </p>
 
-      </div>
-  </p>
-</footer>
+          </div>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
