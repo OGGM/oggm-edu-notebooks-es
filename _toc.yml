@@ -8,7 +8,7 @@ parts:
     chapters:
     - file: oggm-edu-es/getting_started_with_notebooks_es
 
-  - caption: Modelado de líneas de flujo
+  - caption: Modelo de líneas de flujo
     chapters:
     - file: oggm-edu-es/edu_intro_es
     - file: oggm-edu-es/ice_flow_parameters_es
