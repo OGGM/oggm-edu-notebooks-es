@@ -2,4 +2,4 @@
 
 Material educativo sobre los glaciares de montaña.
 
-Web: http://edu.oggm.org
+Web: [https://oggm.org/oggm-edu-notebooks-es](https://oggm.org/oggm-edu-notebooks-es)
