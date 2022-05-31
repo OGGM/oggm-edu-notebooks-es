@@ -37,9 +37,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -380,16 +383,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_14746/2521492078.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">GlacierBed</span><span class="p">,</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">GlacierCollection</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;oggm_edu&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Vamos a crear un glaciar</p>
 <div class="cell docutils container">
@@ -413,6 +406,11 @@ Podemos comprobar esto accediendo al atributo <code class="docutils literal notr
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">creep</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4e-24
 </pre></div>
 </div>
 </div>
@@ -440,6 +438,133 @@ Aquí también presentaremos el método <code class="docutils literal notranslat
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>Age</th>
+      <th>Length [m]</th>
+      <th>Area [km2]</th>
+      <th>Volume [km3]</th>
+      <th>Max ice thickness [m]</th>
+      <th>Response time [yrs]</th>
+      <th>Bed type</th>
+      <th>Top [m]</th>
+      <th>Bottom [m]</th>
+      <th>Width(s) [m]</th>
+      <th>Length [km]</th>
+      <th>ELA [m]</th>
+      <th>Original ELA [m]</th>
+      <th>Temperature bias [C]</th>
+      <th>Gradient [mm/m/yr]</th>
+      <th>Hemisphere</th>
+      <th>Ice density [kg/m3]</th>
+    </tr>
+    <tr>
+      <th>Glacier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Glacier</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>300</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>4</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Glacier</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>300</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>4</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Glacier</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>300</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>4</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Luego podemos cambiar el parámetro de fluencia de los glaciares dentro de la colección.</p>
 <div class="cell docutils container">
@@ -469,12 +594,18 @@ Aquí también presentaremos el método <code class="docutils literal notranslat
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/ice_flow_parameters_es_18_0.png" src="../_images/ice_flow_parameters_es_18_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot_history</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ice_flow_parameters_es_19_0.png" src="../_images/ice_flow_parameters_es_19_0.png" />
 </div>
 </div>
 </div>
@@ -487,6 +618,11 @@ Por defecto se establece en 0, pero se puede modificar</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sliding parameter</span>
 <span class="n">glacier</span><span class="o">.</span><span class="n">basal_sliding</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
 </pre></div>
 </div>
 </div>
@@ -527,12 +663,18 @@ Por defecto se establece en 0, pero se puede modificar</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/ice_flow_parameters_es_28_0.png" src="../_images/ice_flow_parameters_es_28_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot_history</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ice_flow_parameters_es_29_0.png" src="../_images/ice_flow_parameters_es_29_0.png" />
 </div>
 </div>
 <p>Inicialmente, el glaciar con mayor deslizamiento basal avanza por el lecho más rápido en comparación con el glaciar sin deslizamiento basal.

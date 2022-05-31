@@ -37,9 +37,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -432,17 +435,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_16620/2011614705.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">GlacierBed</span><span class="p">,</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierCollection</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">oggm_edu.funcs</span> <span class="kn">import</span> <span class="n">plot_glacier_graphics</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;oggm_edu&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="explorando-el-avance-y-retroceso-de-los-glaciares-con-oggm-edu">
 <h2>Explorando el avance y retroceso de los glaciares con OGGM-Edu<a class="headerlink" href="#explorando-el-avance-y-retroceso-de-los-glaciares-con-oggm-edu" title="Permalink to this headline">¶</a></h2>
@@ -480,6 +472,9 @@ A menudo, los glaciares son más anchos en el área de acumulación, por lo que 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bed</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/advance_and_retreat_es_8_0.png" src="../_images/advance_and_retreat_es_8_0.png" />
 </div>
 </div>
 <p>Ahora necesitamos definir la distribución del balance de masa sobre el glaciar, después de lo cual el glaciar puede crecer hasta su estado de equilibrio inicial.</p>
@@ -534,12 +529,73 @@ con el gradiente de balance de masas \)</span>\frac{d\dot{m}}{dz}$:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Attribute</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Type</th>
+      <td>Glacier</td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Length [m]</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Area [km2]</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Volume [km3]</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Max ice thickness [m]</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Response time [yrs]</th>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/advance_and_retreat_es_24_0.png" src="../_images/advance_and_retreat_es_24_0.png" />
 </div>
 </div>
 </div>
@@ -561,6 +617,9 @@ con el gradiente de balance de masas \)</span>\frac{d\dot{m}}{dz}$:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/advance_and_retreat_es_30_0.png" src="../_images/advance_and_retreat_es_30_0.png" />
 </div>
 </div>
 <p>Aunque nuestro glaciar inicial está en equilibrio, no significa que el balance de masa sea cero en todas partes.
@@ -597,6 +656,60 @@ Nuestro escenario implica una disminución de temperatura de -1.5<span class="ma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>MassBalance</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ELA [m]</th>
+      <td>3108.333333</td>
+    </tr>
+    <tr>
+      <th>Original ELA [m]</th>
+      <td>3333.333333</td>
+    </tr>
+    <tr>
+      <th>Temperature bias [C]</th>
+      <td>-1.5</td>
+    </tr>
+    <tr>
+      <th>Gradient [mm/m/yr]</th>
+      <td>[7]</td>
+    </tr>
+    <tr>
+      <th>Hemisphere</th>
+      <td>nh</td>
+    </tr>
+    <tr>
+      <th>Ice density [kg/m3]</th>
+      <td>900.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Como podemos ver en la representación anterior, el ELA actual se encuentra alrededor de los 3108 m s.n.m. mientras que el ELA original estaba a 3333 m s.n.m.
 Echemos un vistazo al nuevo estado de equilibrio después de que redujimos la temperatura.</p>
@@ -605,6 +718,9 @@ Echemos un vistazo al nuevo estado de equilibrio después de que redujimos la te
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_glacier</span><span class="o">.</span><span class="n">plot_state_history</span><span class="p">(</span><span class="n">eq_states</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/advance_and_retreat_es_39_0.png" src="../_images/advance_and_retreat_es_39_0.png" />
 </div>
 </div>
 <p>La disminución de la ELA da como resultado un área de acumulación aumentada y, por lo tanto, una mayor acumulación. Más masa en la parte superior del glaciar aumentará el flujo de hielo <span class="math notranslate nohighlight">\(\vec{q}\)</span> hacia abajo del glaciar, lo que provocará un avance del extremo del glaciar y, por lo tanto, expandirá el área de ablación.
@@ -616,6 +732,9 @@ Esto también se ilustra en la siguiente gráfica.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_glacier_graphics</span><span class="p">(</span><span class="s1">&#39;09&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/advance_and_retreat_es_41_0.png" src="../_images/advance_and_retreat_es_41_0.png" />
 </div>
 </div>
 </div>
@@ -656,6 +775,60 @@ Para ello planteamos otro escenario de cambio climático, pero esta vez con un c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>MassBalance</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ELA [m]</th>
+      <td>3783.333333</td>
+    </tr>
+    <tr>
+      <th>Original ELA [m]</th>
+      <td>3333.333333</td>
+    </tr>
+    <tr>
+      <th>Temperature bias [C]</th>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>Gradient [mm/m/yr]</th>
+      <td>[7]</td>
+    </tr>
+    <tr>
+      <th>Hemisphere</th>
+      <td>nh</td>
+    </tr>
+    <tr>
+      <th>Ice density [kg/m3]</th>
+      <td>900.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Aquí acabamos elevando la ELA desde 3333 m. asl a 3783 m. asl</p>
 <p>Trazar el nuevo estado de equilibrio</p>
@@ -664,6 +837,9 @@ Para ello planteamos otro escenario de cambio climático, pero esta vez con un c
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_glacier</span><span class="o">.</span><span class="n">plot_state_history</span><span class="p">(</span><span class="n">eq_states</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/advance_and_retreat_es_51_0.png" src="../_images/advance_and_retreat_es_51_0.png" />
 </div>
 </div>
 <p>Comparando los contornos de los dos estados de equilibrio, podemos ver que el glaciar ha retrocedido: el contorno naranja en corto es más antiguo en comparación con el contorno azul.
@@ -674,6 +850,9 @@ Similar a lo que vemos en la siguiente figura.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/advance_and_retreat_es_53_0.png" src="../_images/advance_and_retreat_es_53_0.png" />
+</div>
 </div>
 <p>Podemos explorar más a fondo la respuesta del glaciar durante la retirada observando la historia de nuestro glaciar.</p>
 <div class="cell docutils container">
@@ -681,6 +860,9 @@ Similar a lo que vemos en la siguiente figura.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_glacier</span><span class="o">.</span><span class="n">plot_history</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/advance_and_retreat_es_55_0.png" src="../_images/advance_and_retreat_es_55_0.png" />
 </div>
 </div>
 <p>El aumento de la temperatura hará crecer el área de ablación que corresponde al aumento de la ELA.

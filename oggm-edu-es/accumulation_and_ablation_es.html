@@ -37,9 +37,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -443,16 +446,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_16602/3474236874.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierBed</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;oggm_edu&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p><em>Aviso de derechos de autor: las siguientes secciones se basan en gran medida en el libro “La física de los glaciares” de Cuffey y Paterson, (2010). Las imágenes del glaciar están tomadas de <a class="reference external" href="http://edu.oggm.org/en/latest/glacier_basics.html">open glacier graphics</a> en OGGM-Edu, realizadas por Anne Maussion, <a class="reference external" href="http://edu.oggm.org/en/latest/glacier_basics.html">open glacier graphics</a>.</em></p>
 <p>El <strong>balance de masa</strong> es el resultado de varios procesos que agregan masa al glaciar (<strong>acumulación</strong>) o eliminan masa del glaciar (<strong>ablación</strong>).
@@ -541,6 +534,9 @@ Queremos crear un lecho glaciar que tenga 1500 metros de ancho en la parte super
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/accumulation_and_ablation_es_31_0.png" src="../_images/accumulation_and_ablation_es_31_0.png" />
+</div>
 </div>
 <p>Entonces necesitaremos un balance de masa. En nuestro caso será un balance de masa lineal simple, definido por la altitud de la línea de equilibrio (ELA) y un gradiente de balance de masa lineal con respecto a la elevación (en [mm m<span class="math notranslate nohighlight">\(^{-1}\)</span>]). La altitud de la línea de equilibrio se encuentra en la transición entre la zona de acumulación y ablación Podemos usar la misma expresión que usamos para crear la transición de la cama:</p>
 <div class="cell docutils container">
@@ -566,6 +562,9 @@ Queremos crear un lecho glaciar que tenga 1500 metros de ancho en la parte super
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/accumulation_and_ablation_es_36_0.png" src="../_images/accumulation_and_ablation_es_36_0.png" />
+</div>
 </div>
 <p>Progresemos el glaciar al equilibrio</p>
 <div class="cell docutils container">
@@ -581,6 +580,9 @@ Queremos crear un lecho glaciar que tenga 1500 metros de ancho en la parte super
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/accumulation_and_ablation_es_40_0.png" src="../_images/accumulation_and_ablation_es_40_0.png" />
 </div>
 </div>
 <div class="alert alert-success"> <b>Ejercicio</b>: intente cambiar los parámetros de la geometría del glaciar: ancho superior, ancho en el ELA, ELA inferior o agregando más geometría al lecho. ¿Crees que un glaciar más ancho o más estrecho alcanzará el equilibrio más rápido o más lento?
@@ -598,6 +600,11 @@ Queremos crear un lecho glaciar que tenga 1500 metros de ancho en la parte super
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">specific_mass_balance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.48756623584850356
 </pre></div>
 </div>
 </div>
@@ -652,6 +659,9 @@ Esto también muestra cómo puede acceder a las propiedades del ‘Glaciar’ y 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Ice flux $q$ (m$^3$ s$^{-1}$)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/accumulation_and_ablation_es_55_0.png" src="../_images/accumulation_and_ablation_es_55_0.png" />
 </div>
 </div>
 <p>Por construcción, el flujo de hielo es máximo en la altitud de la línea de equilibrio y cero en el extremo del glaciar.</p>

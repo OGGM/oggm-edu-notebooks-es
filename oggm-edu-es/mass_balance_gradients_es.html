@@ -37,9 +37,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -418,16 +421,6 @@ En este cuaderno, configuraremos algunos glaciares simples para explorar más a 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_16692/777801523.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierBed</span><span class="p">,</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">GlacierCollection</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;oggm_edu&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="inicializando-el-glaciar">
 <h2>Inicializando el glaciar<a class="headerlink" href="#inicializando-el-glaciar" title="Permalink to this headline">¶</a></h2>
@@ -497,12 +490,18 @@ Esto se logra pasando una lista de gradientes y otra lista con la altitud de los
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/mass_balance_gradients_es_13_0.png" src="../_images/mass_balance_gradients_es_13_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot_mass_balance</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/mass_balance_gradients_es_14_0.png" src="../_images/mass_balance_gradients_es_14_0.png" />
 </div>
 </div>
 <p>Un gradiente de balance de masa más fuerte (línea más plana en el gráfico anterior) implica un cambio mayor del balance de masa con la altitud.
@@ -548,6 +547,9 @@ Con esto en mente, veremos qué tan rápido nuestros glaciares, con diferentes g
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/mass_balance_gradients_es_20_0.png" src="../_images/mass_balance_gradients_es_20_0.png" />
+</div>
 </div>
 <p>Los diferentes glaciares alcanzan su estado de equilibrio después de un número diferente de años. ¿Qué nos muestra la figura? ¿Qué glaciar es el más grueso y largo? Veamos números específicos:</p>
 <div class="cell docutils container">
@@ -556,6 +558,133 @@ Con esto en mente, veremos qué tan rápido nuestros glaciares, con diferentes g
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>Age</th>
+      <th>Length [m]</th>
+      <th>Area [km2]</th>
+      <th>Volume [km3]</th>
+      <th>Max ice thickness [m]</th>
+      <th>Response time [yrs]</th>
+      <th>Bed type</th>
+      <th>Top [m]</th>
+      <th>Bottom [m]</th>
+      <th>Width(s) [m]</th>
+      <th>Length [km]</th>
+      <th>ELA [m]</th>
+      <th>Original ELA [m]</th>
+      <th>Temperature bias [C]</th>
+      <th>Gradient [mm/m/yr]</th>
+      <th>Hemisphere</th>
+      <th>Ice density [kg/m3]</th>
+    </tr>
+    <tr>
+      <th>Glacier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Glacier</td>
+      <td>2500</td>
+      <td>8700.0</td>
+      <td>3.48</td>
+      <td>0.376760</td>
+      <td>119.836080</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>0.3</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Glacier</td>
+      <td>515</td>
+      <td>12300.0</td>
+      <td>4.92</td>
+      <td>0.931013</td>
+      <td>211.953447</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>4.0</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Glacier</td>
+      <td>188</td>
+      <td>13600.0</td>
+      <td>5.44</td>
+      <td>1.380161</td>
+      <td>283.343538</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>15.0</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>El glaciar con el gradiente más fuerte alcanza primero el estado de equilibrio. Este es también el glaciar más grande y más largo.</p>
 </div>
@@ -574,6 +703,64 @@ Usamos el glaciar desde el comienzo del cuaderno.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Attribute</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Type</th>
+      <td>Glacier</td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Length [m]</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Area [km2]</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Volume [km3]</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Max ice thickness [m]</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Response time [yrs]</th>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Primero progresamos el glaciar al equilibrio</p>
 <div class="cell docutils container">
@@ -589,11 +776,19 @@ Usamos el glaciar desde el comienzo del cuaderno.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/mass_balance_gradients_es_28_0.png" src="../_images/mass_balance_gradients_es_28_0.png" />
+</div>
 </div>
 <p>Podemos acceder a los estados de equilibrio almacenados de un glaciar</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">eq_states</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{515: 3000}
 </pre></div>
 </div>
 </div>
@@ -631,10 +826,18 @@ El aumento de la temperatura aumentará el tamaño del área de ablación del gl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/mass_balance_gradients_es_35_0.png" src="../_images/mass_balance_gradients_es_35_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">eq_states</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{515: 3000, 771: 3150.0}
 </pre></div>
 </div>
 </div>
@@ -652,6 +855,11 @@ Afortunadamente, esto lo hace nuestro objeto glaciar, por lo que solo podemos ec
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68.0
+</pre></div>
+</div>
+</div>
 </div>
 <p>o simplemente mira la representación</p>
 <div class="cell docutils container">
@@ -660,6 +868,64 @@ Afortunadamente, esto lo hace nuestro objeto glaciar, por lo que solo podemos ec
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Attribute</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Type</th>
+      <td>Glacier</td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>771</td>
+    </tr>
+    <tr>
+      <th>Length [m]</th>
+      <td>8900.0</td>
+    </tr>
+    <tr>
+      <th>Area [km2]</th>
+      <td>3.56</td>
+    </tr>
+    <tr>
+      <th>Volume [km3]</th>
+      <td>0.587687</td>
+    </tr>
+    <tr>
+      <th>Max ice thickness [m]</th>
+      <td>187.183503</td>
+    </tr>
+    <tr>
+      <th>Response time [yrs]</th>
+      <td>68.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Ahora que hemos introducido el concepto de tiempo de respuesta, podemos aplicarlo y ver cómo los diferentes gradientes de balance de masa afectan el tiempo de respuesta.
 Para ello necesitamos una nueva colección.</p>
@@ -699,6 +965,133 @@ Para ello necesitamos una nueva colección.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>Age</th>
+      <th>Length [m]</th>
+      <th>Area [km2]</th>
+      <th>Volume [km3]</th>
+      <th>Max ice thickness [m]</th>
+      <th>Response time [yrs]</th>
+      <th>Bed type</th>
+      <th>Top [m]</th>
+      <th>Bottom [m]</th>
+      <th>Width(s) [m]</th>
+      <th>Length [km]</th>
+      <th>ELA [m]</th>
+      <th>Original ELA [m]</th>
+      <th>Temperature bias [C]</th>
+      <th>Gradient [mm/m/yr]</th>
+      <th>Hemisphere</th>
+      <th>Ice density [kg/m3]</th>
+    </tr>
+    <tr>
+      <th>Glacier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Glacier</td>
+      <td>1397</td>
+      <td>11100.0</td>
+      <td>4.44</td>
+      <td>0.617579</td>
+      <td>156.657761</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Glacier</td>
+      <td>515</td>
+      <td>12300.0</td>
+      <td>4.92</td>
+      <td>0.931013</td>
+      <td>211.953447</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>4</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Glacier</td>
+      <td>188</td>
+      <td>13600.0</td>
+      <td>5.44</td>
+      <td>1.380161</td>
+      <td>283.343538</td>
+      <td>NaN</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3000</td>
+      <td>3000</td>
+      <td>0</td>
+      <td>15</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Luego tenemos que configurar un escenario de cambio climático para los glaciares en la colección.</p>
 <div class="cell docutils container">
@@ -725,12 +1118,142 @@ Para ello necesitamos una nueva colección.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>Age</th>
+      <th>Length [m]</th>
+      <th>Area [km2]</th>
+      <th>Volume [km3]</th>
+      <th>Max ice thickness [m]</th>
+      <th>Response time [yrs]</th>
+      <th>Bed type</th>
+      <th>Top [m]</th>
+      <th>Bottom [m]</th>
+      <th>Width(s) [m]</th>
+      <th>Length [km]</th>
+      <th>ELA [m]</th>
+      <th>Original ELA [m]</th>
+      <th>Temperature bias [C]</th>
+      <th>Gradient [mm/m/yr]</th>
+      <th>Hemisphere</th>
+      <th>Ice density [kg/m3]</th>
+    </tr>
+    <tr>
+      <th>Glacier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Glacier</td>
+      <td>2035</td>
+      <td>8000.0</td>
+      <td>3.20</td>
+      <td>0.378812</td>
+      <td>134.826943</td>
+      <td>228.0</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3150.0</td>
+      <td>3000</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Glacier</td>
+      <td>771</td>
+      <td>8900.0</td>
+      <td>3.56</td>
+      <td>0.587687</td>
+      <td>187.183503</td>
+      <td>68.0</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3150.0</td>
+      <td>3000</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Glacier</td>
+      <td>289</td>
+      <td>10000.0</td>
+      <td>4.00</td>
+      <td>0.885816</td>
+      <td>247.787963</td>
+      <td>25.0</td>
+      <td>Linear bed with a constant width</td>
+      <td>3400</td>
+      <td>1500</td>
+      <td>400</td>
+      <td>20.0</td>
+      <td>3150.0</td>
+      <td>3000</td>
+      <td>1.0</td>
+      <td>15</td>
+      <td>nh</td>
+      <td>900.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot_history</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/mass_balance_gradients_es_50_0.png" src="../_images/mass_balance_gradients_es_50_0.png" />
 </div>
 </div>
 <p>También podemos mirar la historia del estado de uno de los glaciares.</p>
@@ -740,6 +1263,9 @@ Para ello necesitamos una nueva colección.</p>
 <span class="n">collection</span><span class="o">.</span><span class="n">glaciers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot_state_history</span><span class="p">(</span><span class="n">eq_states</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/mass_balance_gradients_es_52_0.png" src="../_images/mass_balance_gradients_es_52_0.png" />
 </div>
 </div>
 <p>El glaciar con MBG más débil necesita más tiempo para adaptarse a un cambio climático en comparación con los otros glaciares. Por otro lado, el glaciar con el gradiente más fuerte solo necesita alrededor de dos décadas para ajustar su forma al nuevo clima (Un ejemplo del mundo real: el glaciar Franz Josef en Nueva Zelanda<a class="reference external" href="#References">⁶</a>)<a class="reference external" href="#References">⁶</a>. El tiempo de respuesta de los glaciares con gradientes débiles es en realidad mucho más largo que 200 años, en realidad más cercano a 2000 años.</p>
