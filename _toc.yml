@@ -2,3 +2,26 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 format: jb-book
 root: bienvenidos
+
+parts:
+  - caption: Principiantes
+    chapters:
+    - file: oggm-edu-es/getting_started_with_notebooks_es
+
+  - caption: Modelado de líneas de flujo
+    chapters:
+    - file: oggm-edu-es/edu_intro_es
+    - file: oggm-edu-es/ice_flow_parameters_es
+    - file: oggm-edu-es/mass_balance_gradients_es
+    - file: oggm-edu-es/surging_experiment_es
+    
+  - caption: Balance de masa
+    chapters:
+    - file: oggm-edu-es/temperature_index_model_es
+    - file: oggm-edu-es/accumulation_and_ablation_es
+    - file: oggm-edu-es/advance_and_retreat_es
+    
+  - caption: Los glaciares como recursos hídricos
+    chapters:
+    - file: oggm-edu-es/glacier_water_resources_es
+    - file: oggm-edu-es/glacier_water_resources_projections_es
