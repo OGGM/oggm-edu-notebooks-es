@@ -1,0 +1,886 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Primeros pasos con OGGM Edu: glaciares idealizados &#8212; Notebooks OGGM-Edu</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Influencia de los parámetros del flujo de hielo en el tamaño del glaciar" href="ice_flow_parameters_es.html" />
+    <link rel="prev" title="Introducción a Jupyter Notebook" href="getting_started_with_notebooks_es.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-106829797-2', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notebooks OGGM-Edu</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bienvenidos.html">
+   Bienvenidos en los notebooks OGGM-Edu
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Principiantes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_with_notebooks_es.html">
+   Introducción a Jupyter Notebook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Modelado de líneas de flujo
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Primeros pasos con OGGM Edu: glaciares idealizados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ice_flow_parameters_es.html">
+   Influencia de los parámetros del flujo de hielo en el tamaño del glaciar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mass_balance_gradients_es.html">
+   Gradientes de balance de masa (MBG) y su influencia en el flujo glaciar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surging_experiment_es.html">
+   Experimentos de levantamiento de glaciares
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Balance de masa
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="temperature_index_model_es.html">
+   Modelos de índice de temperatura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="accumulation_and_ablation_es.html">
+   Acumulación, ablación, balance de masa y el flujo de hielo resultante
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="advance_and_retreat_es.html">
+   Avance y retroceso de los glaciares
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Los glaciares como recursos hídricos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="glacier_water_resources_es.html">
+   Los glaciares como recursos hídricos: parte 1 (clima idealizado)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glacier_water_resources_projections_es.html">
+   Los glaciares como recursos hídricos: parte 2 (proyecciones)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/oggm-edu-es/edu_intro_es.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/OGGM/oggm-edu-notebooks-es"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/OGGM/oggm-edu-notebooks-es/issues/new?title=Issue%20on%20page%20%2Foggm-edu-es/edu_intro_es.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/OGGM/oggm-edu-notebooks-es/edit/master/./oggm-edu-es/edu_intro_es.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/OGGM/oggm-edu-notebooks-es/master?urlpath=lab/tree/./oggm-edu-es/edu_intro_es.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://classroom.oggm.org/hub/user-redirect/git-pull?repo=https://github.com/OGGM/oggm-edu-notebooks-es&urlpath=lab/tree/oggm-edu-notebooks-es/./oggm-edu-es/edu_intro_es.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#primeros-pasos">
+   Primeros pasos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#el-lecho-del-glaciar">
+     El lecho del glaciar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#balance-de-masa">
+     Balance de masa
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inicializacion-del-glaciar">
+     Inicialización del glaciar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#progresando-el-glaciar">
+     Progresando el glaciar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#historia-de-los-glaciares">
+     Historia de los glaciares
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estado-de-equilibrio">
+     Estado de equilibrio
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#un-primer-experimento">
+   Un primer experimento
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-sigue">
+   ¿Que sigue?
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Primeros pasos con OGGM Edu: glaciares idealizados</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#primeros-pasos">
+   Primeros pasos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#el-lecho-del-glaciar">
+     El lecho del glaciar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#balance-de-masa">
+     Balance de masa
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inicializacion-del-glaciar">
+     Inicialización del glaciar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#progresando-el-glaciar">
+     Progresando el glaciar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#historia-de-los-glaciares">
+     Historia de los glaciares
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estado-de-equilibrio">
+     Estado de equilibrio
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#un-primer-experimento">
+   Un primer experimento
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-sigue">
+   ¿Que sigue?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="primeros-pasos-con-oggm-edu-glaciares-idealizados">
+<h1>Primeros pasos con OGGM Edu: glaciares idealizados<a class="headerlink" href="#primeros-pasos-con-oggm-edu-glaciares-idealizados" title="Permalink to this headline">¶</a></h1>
+<p>OGGM Edu proporciona una forma sencilla de experimentar con los glaciares en su computadora.
+Esto se logra mediante una interfaz de alto nivel para las diferentes partes del complejo modelo glaciar que es OGGM.
+Usted, como usuario, interactuará con algunos objetos que le proporcionarán métodos y atributos adecuados para un glaciar y las partes que lo componen.
+El objetivo de este cuaderno es presentarle OGGM Edu y cómo se puede utilizar para simular dos glaciares idealizados.
+Empezamos importando las clases que necesitamos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierBed</span><span class="p">,</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">GlacierCollection</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_14554/777801523.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierBed</span><span class="p">,</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">GlacierCollection</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;oggm_edu&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Las tres clases principales que vamos a utilizar son las</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Glaciar</span> <span class="pre">Lecho</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Balance</span> <span class="pre">de</span> <span class="pre">masa</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Glaciar</span></code>
+El <code class="docutils literal notranslate"><span class="pre">GlacierBed</span></code> proporciona una manera fácil de definir el lecho del glaciar, mientras que el <code class="docutils literal notranslate"><span class="pre">MassBalance</span></code> se usa para definir el balance de masa del glaciar.
+El ‘Glaciar’ luego nos proporciona métodos para progresar y visualizar el glaciar y los atributos informativos.
+Para crear un glaciar necesitamos darle un lecho y un balance de masa.</p></li>
+</ul>
+<div class="section" id="primeros-pasos">
+<h2>Primeros pasos<a class="headerlink" href="#primeros-pasos" title="Permalink to this headline">¶</a></h2>
+<p>En nuestro primer experimento queremos crear un glaciar que sea lo más simple posible.
+Esto significa un lecho glaciar con una pendiente y un ancho constantes y un balance de masa simple.
+Comenzamos con la creación del lecho de nuestro glaciar.</p>
+<div class="section" id="el-lecho-del-glaciar">
+<h3>El lecho del glaciar<a class="headerlink" href="#el-lecho-del-glaciar" title="Permalink to this headline">¶</a></h3>
+<p>En su forma más simple, el lecho del glaciar requiere una altura superior e inferior y una anchura.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All arguments are specified in meters.</span>
+<span class="n">bed</span> <span class="o">=</span> <span class="n">GlacierBed</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">3400</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This gives us some statistics about the bed.</span>
+<span class="n">bed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tracemos la cama para asegurarnos de que se vea como esperamos.
+El objeto <code class="docutils literal notranslate"><span class="pre">bed</span></code> tiene un método incorporado para esto que nos proporciona una vista lateral y de arriba hacia abajo del dominio del glaciar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bed</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para un control más preciso sobre la pendiente del lecho, puede pasar un solo valor a <code class="docutils literal notranslate"><span class="pre">pendientes</span></code> durante la creación</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will give us a steeper bed compared to the default.</span>
+<span class="n">bed_with_slope</span> <span class="o">=</span> <span class="n">GlacierBed</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">3400</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">slopes</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">bed_with_slope</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>También puede pasar una secuencia de ángulos de pendiente en <code class="docutils literal notranslate"><span class="pre">slopes</span></code>; para esto, también necesita especificar los tramos de altitud de las secciones con el argumento <code class="docutils literal notranslate"><span class="pre">slope_sections</span></code>.
+Debe haber una entrada más en <code class="docutils literal notranslate"><span class="pre">slope_sections</span></code> en comparación con las entradas en pendientes.
+El primer y último valor en <code class="docutils literal notranslate"><span class="pre">slope_sections</span></code> deben coincidir con la parte superior e inferior del glaciar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A bed with multiple slopes</span>
+<span class="n">bed_with_multiple_slopes</span> <span class="o">=</span> <span class="n">GlacierBed</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">3400</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+                                      <span class="n">slopes</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+                                      <span class="c1"># Slope sections are defined by altitude</span>
+                                      <span class="c1"># pairs. Here we have two parirs.</span>
+                                      <span class="n">slope_sections</span><span class="o">=</span><span class="p">[</span><span class="mi">3400</span><span class="p">,</span> <span class="mi">2200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">])</span>
+<span class="n">bed_with_multiple_slopes</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="balance-de-masa">
+<h3>Balance de masa<a class="headerlink" href="#balance-de-masa" title="Permalink to this headline">¶</a></h3>
+<p>Para que el glaciar crezca necesita un modelo de balance de masa.
+El balance de masa es responsable de agregar nieve y eliminar hielo a través del deshielo en el glaciar.
+En nuestro caso será un balance de masa lineal simple, lo que significa que decrece linealmente con la altitud.
+El balance de masa se define por la altitud de la línea de equilibrio (ELA) y el gradiente de altitud (en mm yr<span class="math notranslate nohighlight">\(^{-1}\)</span> m<span class="math notranslate nohighlight">\(^{-1}\)</span>).
+El ELA define a qué altitud el balance de masa es cero y el gradiente de altitud cuánto cambia el balance de masa con la altitud. <strong>¡Más sobre esto en los próximos cuadernos!</strong>
+Establecimos el ELA de nuestro glaciar en 3000 metros y el gradiente de altitud en 4 mm yr<span class="math notranslate nohighlight">\(^{-1}\)</span> m<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass_balance</span> <span class="o">=</span> <span class="n">MassBalance</span><span class="p">(</span><span class="n">ela</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass_balance</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inicializacion-del-glaciar">
+<h3>Inicialización del glaciar<a class="headerlink" href="#inicializacion-del-glaciar" title="Permalink to this headline">¶</a></h3>
+<p>Ahora podemos tomar nuestro lecho y el balance de masa y crear un glaciar en el que luego podemos realizar experimentos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialise the glacier</span>
+<span class="n">glacier</span> <span class="o">=</span> <span class="n">Glacier</span><span class="p">(</span><span class="n">bed</span><span class="o">=</span><span class="n">bed</span><span class="p">,</span> <span class="n">mass_balance</span><span class="o">=</span><span class="n">mass_balance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>De manera similar a la cama, podemos obtener algunas estadísticas sobre el glaciar simplemente llamándolo.
+Sin embargo, dado que acabamos de crear el glaciar, todo será cero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some statistics about the glacier</span>
+<span class="n">glacier</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="progresando-el-glaciar">
+<h3>Progresando el glaciar<a class="headerlink" href="#progresando-el-glaciar" title="Permalink to this headline">¶</a></h3>
+<p>Ahora el glaciar tiene todos los ingredientes necesarios para evolucionar.</p>
+<p>Primero avancemos el glaciar al año 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We want to progress the glacier to year 1.</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">progress_to_year</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y echemos un vistazo al glaciar.
+Al igual que la cama, tiene un método interno para esto.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aquí podemos ver que hay una fina capa de hielo desde la parte superior y 4 km hacia abajo del lecho del glaciar.
+Entonces, el glaciar casi llega al punto donde el lecho se cruza con el ELA (~4 km).
+También podemos volver a echar un vistazo a algunas de las estadísticas del glaciar para obtener más detalles:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>De las estadísticas podemos leer que el glaciar tiene una longitud de 4 km y cubre un área de 1,2 km<span class="math notranslate nohighlight">\(^2\)</span>.
+El glaciar crecerá considerablemente en los próximos años, y el espesor del hielo debería ser evidente incluso en el gráfico de altitud - distancia.
+Avancemos el glaciar hasta el año 150 y echemos un vistazo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">progress_to_year</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora podemos ver claramente la diferencia entre la superficie del glaciar y el lecho rocoso.
+Imprimamos las mismas estadísticas sobre el glaciar que antes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>La longitud y el área del glaciar han aumentado en ~20 %, mientras que el volumen ha aumentado en más del 1000 %. Esto se debe a que el glaciar tiene que acumular suficiente masa (es decir, espesor de hielo) antes de que pueda comenzar a fluir cuesta abajo y aumentar su longitud.
+Tenga en cuenta que el glaciar tiene ahora 150 años.
+Si tratamos de hacer progresar el glaciar al mismo año nuevamente, no pasará nada.
+Incluso nos da una advertencia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">progress_to_year</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos progresar fácilmente en el glaciar aún más:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">progress_to_year</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los glaciares ahora han crecido considerablemente más abajo de nuestra montaña inventada, muy por debajo del ELA.
+Es importante señalar que el modelo no puede retroceder en el tiempo.
+Una vez en el año 500, no podemos eliminar la edad del glaciar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">progress_to_year</span><span class="p">(</span><span class="mi">450</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>¡Hagamos lo mismo con uno de los glaciares con perfil de lecho no lineal!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We create a new mass balance for this glacier.</span>
+<span class="n">mass_balance_2</span> <span class="o">=</span> <span class="n">MassBalance</span><span class="p">(</span><span class="n">ela</span><span class="o">=</span><span class="mi">2500</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Initialise the glacier</span>
+<span class="n">glacier_multiple_slopes</span> <span class="o">=</span> <span class="n">Glacier</span><span class="p">(</span><span class="n">bed</span><span class="o">=</span><span class="n">bed_with_multiple_slopes</span><span class="p">,</span>
+                                  <span class="n">mass_balance</span><span class="o">=</span><span class="n">mass_balance_2</span><span class="p">)</span>
+<span class="c1"># Progress the glacier</span>
+<span class="n">glacier_multiple_slopes</span><span class="o">.</span><span class="n">progress_to_year</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># And plot the glacier</span>
+<span class="n">glacier_multiple_slopes</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="historia-de-los-glaciares">
+<h3>Historia de los glaciares<a class="headerlink" href="#historia-de-los-glaciares" title="Permalink to this headline">¶</a></h3>
+<p>Esto nos lleva a la historia de los glaciares.
+Esto es exactamente lo que parece, una historia de la longitud, el volumen y el área del glaciar.
+Podemos acceder a los datos a través del atributo <code class="docutils literal notranslate"><span class="pre">.history</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">history</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y podemos visualizar rápidamente la historia del glaciar con el método <code class="docutils literal notranslate"><span class="pre">.plot_history()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot_history</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>La longitud y el área del glaciar tiene un paso en el primer año.
+Esto tiene que ver con la forma en que OGGM trata internamente con la nieve y el hielo, no diferencia entre ellos.
+Y dado que el balance de masa siempre es positivo por encima del ELA, cualquier nevada en el primer año por encima del ELA permanecerá y se clasificará como parte del glaciar y contribuirá a la longitud y el área.
+Por eso, después del primer año, la longitud y el área del glaciar se mantienen constantes durante algunos años.
+En esta etapa inicial, el hielo es tan delgado que cualquier flujo que lleve hielo por debajo del ELA no será lo suficientemente grande para compensar la alta tasa de ablación, y el hielo se derrite.
+Cuando el espesor del hielo ha aumentado lo suficiente como para que el flujo de hielo supere la tasa de ablación por debajo de la ELA, la longitud del glaciar puede comenzar a aumentar.</p>
+</div>
+<div class="section" id="estado-de-equilibrio">
+<h3>Estado de equilibrio<a class="headerlink" href="#estado-de-equilibrio" title="Permalink to this headline">¶</a></h3>
+<p>Después de varios siglos, el glaciar alcanza un equilibrio con su clima.
+Esto significa que su longitud y volumen no cambiarán más, siempre y cuando todos los parámetros físicos y el clima se mantengan constantes.
+El <code class="docutils literal notranslate"><span class="pre">Glaciar</span></code> tiene un método que hace progresar el glaciar al equilibrio <code class="docutils literal notranslate"><span class="pre">.progress_to_equilibrium()</span></code>, más sobre esto en cuadernos posteriores.</p>
+</div>
+</div>
+<div class="section" id="un-primer-experimento">
+<h2>Un primer experimento<a class="headerlink" href="#un-primer-experimento" title="Permalink to this headline">¶</a></h2>
+<p>Ahora hemos visto cómo configurar un glaciar simple y progresarlo a cualquier año.
+Ahora nos acercaremos un poco más a la realidad y definiremos un glaciar con anchos cambiantes.
+Como muchos glaciares reales, el nuevo glaciar será más ancho en la parte superior (en el área de acumulación) y tendrá un ancho constante por debajo del ELA.
+Podemos lograr esto creando una nueva <code class="docutils literal notranslate"><span class="pre">Bed</span></code> y en lugar de especificar las altitudes superior e inferior junto con el ancho, especificamos las altitudes y los anchos en pares:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_narrow_bed</span> <span class="o">=</span> <span class="n">GlacierBed</span><span class="p">(</span><span class="n">altitudes</span><span class="o">=</span><span class="p">[</span><span class="mi">3400</span><span class="p">,</span> <span class="mi">2800</span><span class="p">,</span> <span class="mi">1500</span><span class="p">],</span>
+                             <span class="n">widths</span><span class="o">=</span><span class="p">[</span><span class="mi">600</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_narrow_bed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aquí el primer y último valor en <code class="docutils literal notranslate"><span class="pre">altitudes</span></code> y <code class="docutils literal notranslate"><span class="pre">widths</span></code> corresponden a la altura/ancho superior/inferior.
+Cualquier valor intermedio cambiará aún más la forma de la cama.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_narrow_bed</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usamos el nuevo lecho para crear un nuevo glaciar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_narrow_glacier</span> <span class="o">=</span> <span class="n">Glacier</span><span class="p">(</span><span class="n">bed</span><span class="o">=</span><span class="n">wide_narrow_bed</span><span class="p">,</span>
+                              <span class="n">mass_balance</span><span class="o">=</span><span class="n">mass_balance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_narrow_glacier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora podemos presentar la <code class="docutils literal notranslate"><span class="pre">GlacierCollection</span></code>.
+Esta es una utilidad que puede almacenar múltiples glaciares y usarse para comparar y ejecutar experimentos fácilmente en múltiples glaciares.
+La <code class="docutils literal notranslate"><span class="pre">GlacierCollection</span></code> se usará ampliamente en estos cuadernos y su funcionalidad se explicará con más detalle a medida que avancemos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We initialise a collection</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">GlacierCollection</span><span class="p">()</span>
+<span class="c1"># And then add the two glaciers available in this notebook.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="n">glacier</span><span class="p">,</span> <span class="n">wide_narrow_glacier</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos echar un vistazo rápido a la colección simplemente llamándola</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Antes de trazar los glaciares en la colección, podemos avanzarlos al mismo año con el método <code class="docutils literal notranslate"><span class="pre">.progress_to_year()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">progress_to_year</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Entonces podemos graficar la colección.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alerta alerta-éxito">
+<detalles><summary><b>El glaciar con un área de acumulación más amplia es más largo en comparación con el área del glaciar simple en el año 600. Con lo que has aprendido hasta ahora en este cuaderno, ¿puedes encontrar una explicación de por qué? </b> <i>Haga clic para obtener una pista</i></summary>
+Con un área de acumulación más amplia, la masa del glaciar por encima del ELA aumentará más rápidamente y el flujo de hielo por debajo del ELA será mayor en comparación con el glaciar con un área de acumulación más pequeña.
+</detalles>
+</div>
+De manera similar al glaciar, la colección tiene un método para trazar fácilmente las historias de los glaciares retenidos.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot_history</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="que-sigue">
+<h2>¿Que sigue?<a class="headerlink" href="#que-sigue" title="Permalink to this headline">¶</a></h2>
+<p>xx_markdown_enlace_xx</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./oggm-edu-es"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="getting_started_with_notebooks_es.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introducción a Jupyter Notebook</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ice_flow_parameters_es.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Influencia de los parámetros del flujo de hielo en el tamaño del glaciar</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By OGGM e.V. y contribudores OGGM<br/>
+    
+      <div class="extra_footer">
+        <p>
+These notebooks are licensed under a <a href="https://github.com/OGGM/tutorials/blob/master/LICENSE.txt" target="_blank">BSD-3-Clause license</a>.
+<br>
+&copy; Copyright 2014-2022.
+</p>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

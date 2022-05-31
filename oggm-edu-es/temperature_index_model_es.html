@@ -1,0 +1,1294 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelos de índice de temperatura &#8212; Notebooks OGGM-Edu</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Acumulación, ablación, balance de masa y el flujo de hielo resultante" href="accumulation_and_ablation_es.html" />
+    <link rel="prev" title="Experimentos de levantamiento de glaciares" href="surging_experiment_es.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-106829797-2', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notebooks OGGM-Edu</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bienvenidos.html">
+   Bienvenidos en los notebooks OGGM-Edu
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Principiantes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_with_notebooks_es.html">
+   Introducción a Jupyter Notebook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Modelado de líneas de flujo
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="edu_intro_es.html">
+   Primeros pasos con OGGM Edu: glaciares idealizados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ice_flow_parameters_es.html">
+   Influencia de los parámetros del flujo de hielo en el tamaño del glaciar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mass_balance_gradients_es.html">
+   Gradientes de balance de masa (MBG) y su influencia en el flujo glaciar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surging_experiment_es.html">
+   Experimentos de levantamiento de glaciares
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Balance de masa
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Modelos de índice de temperatura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="accumulation_and_ablation_es.html">
+   Acumulación, ablación, balance de masa y el flujo de hielo resultante
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="advance_and_retreat_es.html">
+   Avance y retroceso de los glaciares
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Los glaciares como recursos hídricos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="glacier_water_resources_es.html">
+   Los glaciares como recursos hídricos: parte 1 (clima idealizado)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glacier_water_resources_projections_es.html">
+   Los glaciares como recursos hídricos: parte 2 (proyecciones)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/oggm-edu-es/temperature_index_model_es.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/OGGM/oggm-edu-notebooks-es"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/OGGM/oggm-edu-notebooks-es/issues/new?title=Issue%20on%20page%20%2Foggm-edu-es/temperature_index_model_es.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/OGGM/oggm-edu-notebooks-es/edit/master/./oggm-edu-es/temperature_index_model_es.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/OGGM/oggm-edu-notebooks-es/master?urlpath=lab/tree/./oggm-edu-es/temperature_index_model_es.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://classroom.oggm.org/hub/user-redirect/git-pull?repo=https://github.com/OGGM/oggm-edu-notebooks-es&urlpath=lab/tree/oggm-edu-notebooks-es/./oggm-edu-es/temperature_index_model_es.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fondo">
+   Fondo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuracion-del-modelo">
+   Configuración del modelo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grados-de-libertad">
+     Grados de libertad
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementacion-en-oggm">
+   Implementación en OGGM
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datos-climaticos">
+     Datos climáticos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datos-de-balance-de-masa-de-referencia">
+     Datos de balance de masa de referencia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediga-el-balance-de-masa">
+     ¡Prediga el balance de masa!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#llevate-puntos-a-casa">
+   Llévate puntos a casa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-sigue">
+   ¿Que sigue?
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Modelos de índice de temperatura</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fondo">
+   Fondo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuracion-del-modelo">
+   Configuración del modelo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grados-de-libertad">
+     Grados de libertad
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementacion-en-oggm">
+   Implementación en OGGM
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datos-climaticos">
+     Datos climáticos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datos-de-balance-de-masa-de-referencia">
+     Datos de balance de masa de referencia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prediga-el-balance-de-masa">
+     ¡Prediga el balance de masa!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#llevate-puntos-a-casa">
+   Llévate puntos a casa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-sigue">
+   ¿Que sigue?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="modelos-de-indice-de-temperatura">
+<h1>Modelos de índice de temperatura<a class="headerlink" href="#modelos-de-indice-de-temperatura" title="Permalink to this headline">¶</a></h1>
+<p>Objetivos de este cuaderno:</p>
+<ul class="simple">
+<li><p>Obtenga una comprensión básica de los modelos de índice de temperatura</p></li>
+<li><p>Implementar el modelo de índice de temperatura de OGGM para un glaciar de interés</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting libraries and plot style</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;notebook&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;ticks&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">oggm</span>
+<span class="kn">from</span> <span class="nn">oggm</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">workflow</span><span class="p">,</span> <span class="n">graphics</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 09:13:18: oggm.cfg: Reading default parameters from the OGGM `params.cfg` configuration file.
+2022-05-31 09:13:18: oggm.cfg: Multiprocessing switched OFF according to the parameter file.
+2022-05-31 09:13:18: oggm.cfg: Multiprocessing: using all available processors (N=8)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Algunas configuraciones:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a temporary directory to store the required data to</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">PATHS</span><span class="p">[</span><span class="s1">&#39;working_dir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">(</span><span class="s1">&#39;ti_model&#39;</span><span class="p">)</span>
+
+<span class="c1"># set the size of the local glacier map: number of grid points outside the</span>
+<span class="c1"># glacier boundaries</span>
+<span class="c1"># increasing this parameter will (significantly!) increase the amount of data</span>
+<span class="c1"># that needs to be downloaded</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;border&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 09:13:18: oggm.cfg: PARAMS[&#39;border&#39;] changed from `40` to `10`.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fondo">
+<h2>Fondo<a class="headerlink" href="#fondo" title="Permalink to this headline">¶</a></h2>
+<p>El derretimiento de los glaciares influye significativamente en la hidrología de la cuenca. Por lo tanto, es útil contar con predicciones precisas de la escorrentía de las áreas cubiertas por glaciares. En general, hay dos clases de modelos de fusión:</p>
+<ul class="simple">
+<li><p>modelos de balance de energía</p></li>
+<li><p>modelos de índice de temperatura</p></li>
+</ul>
+<p>Los modelos de balance de energía son modelos físicos que cuantifican el fundido como el residuo de la ecuación de balance de energía. Estos modelos requieren mediciones de radiación neta, velocidad del viento, temperatura y propiedades de la superficie para predecir el derretimiento. En un glaciar, las mediciones espacialmente bien resueltas son exigentes y difíciles de mantener. Por lo tanto, un modelo más simple, el modelo de índice de temperatura, es el enfoque más común para modelar el derretimiento de los glaciares.</p>
+<p>Los modelos de índice de temperatura asumen una relación empírica entre las temperaturas del aire y las tasas de fusión y son una simplificación de los modelos de balance de energía. El razonamiento es que el derretimiento está influenciado predominantemente por la radiación atmosférica de onda larga y el flujo de calor sensible, componentes del balance de energía que están muy influenciados por la temperatura del aire <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0022169403002579">(Hock, 2003)</a> . La(s) razón(es) principal(es) por las que los modelos de índices de temperatura se usan comúnmente son la amplia disponibilidad de mediciones de la temperatura del aire y la eficiencia computacional.</p>
+</div>
+<div class="section" id="configuracion-del-modelo">
+<h2>Configuración del modelo<a class="headerlink" href="#configuracion-del-modelo" title="Permalink to this headline">¶</a></h2>
+<p>El modelo de índice de temperatura más simple relaciona la cantidad de hielo o nieve derretida <span class="math notranslate nohighlight">\(M\)</span> (mm) con la suma de las temperaturas positivas del aire <span class="math notranslate nohighlight">\(T^+\)</span> (<span class="math notranslate nohighlight">\(^\circ\)</span>C) por un factor de proporcionalidad <span class="math notranslate nohighlight">\(DDF\)</span>, el <em>grado -factor de día</em>, para cada <span class="math notranslate nohighlight">\(n\)</span> intervalos de tiempo <span class="math notranslate nohighlight">\(\Delta t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\sum_i^{n} M = DDF \sum_i^{n} T^+ \Delta t\]</div>
+<p>Comúnmente, se usa <span class="math notranslate nohighlight">\(\Delta t = 1\)</span> día, de ahí el nombre <em>factor de grado-día</em>. Sin embargo, cualquier otro intervalo de tiempo <span class="math notranslate nohighlight">\(\Delta t\)</span>, p. por hora o mensual, se puede utilizar para determinar <span class="math notranslate nohighlight">\(DDF\)</span>. En la práctica, el modelo requiere mediciones de la temperatura del aire y el balance de masa del glaciar para estimar <span class="math notranslate nohighlight">\(DDF\)</span>; una vez calculado, <span class="math notranslate nohighlight">\(DDF\)</span> se puede usar para predecir el derretimiento midiendo solo la temperatura del aire [(Hock, 2003)](<a class="reference external" href="https://www.sciencedirect.com/">https://www.sciencedirect.com/</a> ciencia/artículo/pii/S0022169403002579). Sin embargo, este modelo de índice de temperatura, también llamado [(Hock, 2003), no puede predecir el balance de masa de la superficie del glaciar.</p>
+<p>Para modelar el balance de masa de la superficie del glaciar, [Marzeion et al., (2012)] (<a class="reference external" href="https://www.the-cryosphere.net/6/1295/2012/tc-6-1295-2012.html">https://www.the-cryosphere.net/6/1295/2012/tc-6-1295-2012.html</a>) desarrolló un modelo de índice de temperatura más sofisticado. El balance de masa mensual <span class="math notranslate nohighlight">\(B_i\)</span> en la elevación <span class="math notranslate nohighlight">\(z\)</span> se calcula como</p>
+<div class="math notranslate nohighlight">
+\[B_i(z) = P_i^{sólido}(z) - \mu^* \text{max}(T_i(z) - T_{fundir}, 0) - \epsilon\]</div>
+<p>donde <span class="math notranslate nohighlight">\(P_i^{Solid}\)</span> es la precipitación sólida mensual, <span class="math notranslate nohighlight">\(T_i\)</span> la temperatura promedio mensual, <span class="math notranslate nohighlight">\(T_{Melt}\)</span> la temperatura promedio mensual por encima de la cual se asume el derretimiento del hielo y <span class="math notranslate nohighlight">\(\epsilon\)</span> el residual. Se supone que <span class="math notranslate nohighlight">\(\epsilon\)</span> es un error aleatorio teniendo en cuenta las incertidumbres asociadas con los procesos físicos no resueltos. <span class="math notranslate nohighlight">\(\mu^*\)</span> es la sensibilidad a la temperatura del glaciar y depende de muchos parámetros, en su mayoría específicos del glaciar (por ejemplo, avalanchas, sombreado topográfico, nubosidad, …).</p>
+<div class="section" id="grados-de-libertad">
+<h3>Grados de libertad<a class="headerlink" href="#grados-de-libertad" title="Permalink to this headline">¶</a></h3>
+<p>Entre otros, la sensibilidad a la temperatura <span class="math notranslate nohighlight">\(\mu^*\)</span>, el umbral de fusión <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y el umbral implícito de precipitación sólida <span class="math notranslate nohighlight">\(T_{Solid}\)</span> son importantes grados de libertad del modelo - <span class="math notranslate nohighlight">\(T_{Solid} \)</span> es la temperatura media mensual por debajo de la cual se supone que la precipitación es sólida.</p>
+<p>Generalmente, <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y <span class="math notranslate nohighlight">\(T_{Solid}\)</span> pueden variar tanto espacial como temporalmente en un glaciar específico. Sin embargo, comúnmente se supone que los dos umbrales <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y <span class="math notranslate nohighlight">\(T_{Solid}\)</span> son constantes. <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y <span class="math notranslate nohighlight">\(T_{Solid}\)</span> influyen significativamente en el balance de masa previsto <span class="math notranslate nohighlight">\(B\)</span> al determinar los meses que se tienen en cuenta en el cálculo.</p>
+<p>Tanto <span class="math notranslate nohighlight">\(T_{Melt}\)</span> como <span class="math notranslate nohighlight">\(T_{Solid}\)</span> pueden determinarse mediante un razonamiento físico: sabemos que tanto la nieve se derrite como la precipitación se vuelve sólida alrededor de 0<span class="math notranslate nohighlight">\(^{\circ}\)</span>C. Por lo tanto, los dos umbrales <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y <span class="math notranslate nohighlight">\(T_{Solid}\)</span> están dentro de un rango natural que depende de las condiciones climatológicas en un sitio de glaciar específico.</p>
+<p>En OGGM, <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y <span class="math notranslate nohighlight">\(T_{Solid}\)</span> son constantes y puede acceder a los valores predeterminados a través del módulo <code class="docutils literal notranslate"><span class="pre">cfg</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the default temperature below which solid precipitation is assumed</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T_solid = </span><span class="si">{}</span><span class="s1">°C&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;temp_all_solid&#39;</span><span class="p">]))</span>
+<span class="c1"># the default temperature above which melt is assumed to occur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T_melt = </span><span class="si">{}</span><span class="s1">°C&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;temp_melt&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T_solid = 0.0°C
+T_melt = -1.0°C
+</pre></div>
+</div>
+</div>
+</div>
+<p>Del mismo modo, puede usar su propio <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y <span class="math notranslate nohighlight">\(T_{Solid}\)</span> si lo desea:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># don&#39;t run this ...</span>
+<span class="c1"># cfg.PARAMS[&#39;temp_all_solid&#39;] = 100</span>
+<span class="c1"># cfg.PARAMS[&#39;temp_melt&#39;] = - 273.15</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>La sensibilidad a la temperatura <span class="math notranslate nohighlight">\(\mu^*\)</span> es específica del glaciar y se determina principalmente mediante técnicas de minimización de errores estadísticos, p. <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares">ordinary least squares</a> (OLS). Estas técnicas estadísticas son muy sensibles al tamaño de la muestra: un problema general en glaciología es que el tamaño de la muestra de los registros anuales de balance de masa es bajo para muchos glaciares.</p>
+<p>Sin embargo, suponga que un registro de balance de masa de <span class="math notranslate nohighlight">\(100\)</span> por año junto con mediciones de temperatura y precipitación está disponible para un glaciar específico (este es el mejor ejemplo y solo muy pocos glaciares tienen registros tan largos). OLS encontrará un <span class="math notranslate nohighlight">\(\mu^*\)</span> estadísticamente significativo que puede usar felizmente para modelar el balance de masa. Pero, ¿qué sucede si solo usa <span class="math notranslate nohighlight">\( 30 \)</span> años del registro de <span class="math notranslate nohighlight">\( 100 \)</span> años? OLS encontrará otro <span class="math notranslate nohighlight">\(\mu^*\)</span> estadísticamente significativo que es diferente del determinado por el registro anual de <span class="math notranslate nohighlight">\(100\)</span>, y se puede encontrar otro <span class="math notranslate nohighlight">\(\mu^*\)</span> estadísticamente significativo para cada subconjunto razonable del registro anual original de <span class="math notranslate nohighlight">\(100\)</span> . Esto implica que <span class="math notranslate nohighlight">\(\mu^*\)</span> es generalmente una sensibilidad a la temperatura <span class="math notranslate nohighlight">\(\mu^*(t)\)</span> dependiente del tiempo.</p>
+<p>Por esta razón, OGGM implementa un procedimiento de calibración, introducido por <a class="reference external" href="https://www.the-cryosphere.net/6/1295/2012/tc-6-1295-2012.html">Marzeion et al., (2012)</a>, para determinar un glaciar constante específico <span class="math notranslate nohighlight">\(\mu^*\)</span> fuera del tiempo <span class="math notranslate nohighlight">\(\mu^*(t)\)</span> candidatos dependientes. Esta calibración está más allá del alcance de este cuaderno y puede leer sobre ella en detalle [Marzeion et al., (2012) y ver una implementación de ejemplo en OGGM [Marzeion et al., (2012).</p>
+</div>
+</div>
+<div class="section" id="implementacion-en-oggm">
+<h2>Implementación en OGGM<a class="headerlink" href="#implementacion-en-oggm" title="Permalink to this headline">¶</a></h2>
+<p>Primero, necesitamos definir un directorio de glaciares:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this may take a while</span>
+<span class="n">gdir</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">init_glacier_directories</span><span class="p">([</span><span class="n">utils</span><span class="o">.</span><span class="n">demo_glacier_id</span><span class="p">(</span><span class="s1">&#39;hef&#39;</span><span class="p">)],</span> <span class="n">from_prepro_level</span><span class="o">=</span><span class="mi">3</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-31 09:13:19: oggm.workflow: init_glacier_directories from prepro level 3 on 1 glaciers.
+2022-05-31 09:13:19: oggm.workflow: Execute entity tasks [gdir_from_prepro] on 1 glaciers
+2022-05-31 09:13:19: oggm.utils: /home/mowglie/disk/OGGM_INPUT/download_cache/cluster.klima.uni-bremen.de/~oggm/gdirs/oggm_v1.4/L3-L5_files/CRU/centerlines/qc3/pcp2.5/no_match/RGI62/b_010/L3/RGI60-11/RGI60-11.00.tar verified successfully.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si desea ver el dominio de su modelo, puede trazarlo usando:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># graphics.plot_domain(gdir)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En OGGM, se puede acceder al modelo de índice de temperatura calibrado para cada glaciar a través de la clase <code class="docutils literal notranslate"><span class="pre">PastMassBalance</span></code> del módulo <code class="docutils literal notranslate"><span class="pre">massbalance</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">oggm.core</span> <span class="kn">import</span> <span class="n">massbalance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this class is the calibrated temperature index model</span>
+<span class="n">mb_cal</span> <span class="o">=</span> <span class="n">massbalance</span><span class="o">.</span><span class="n">PastMassBalance</span><span class="p">(</span><span class="n">gdir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En este caso,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the glacier selected is </span><span class="si">{}</span><span class="s1">,&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gdir</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the glacier selected is Hintereisferner,
+</pre></div>
+</div>
+</div>
+</div>
+<p>y su sensibilidad a la temperatura calibrada <span class="math notranslate nohighlight">\(\mu^*\)</span> es</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mu_star = </span><span class="si">{:2f}</span><span class="s1"> mm K^-1 yr^-1.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mb_cal</span><span class="o">.</span><span class="n">mu_star</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu_star = 221.283784 mm K^-1 yr^-1.
+</pre></div>
+</div>
+</div>
+</div>
+<p>De manera similar, el residuo <span class="math notranslate nohighlight">\(\epsilon\)</span> es</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;epsilon = </span><span class="si">{:2f}</span><span class="s1"> mm.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mb_cal</span><span class="o">.</span><span class="n">bias</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epsilon = 4.685993 mm.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="datos-climaticos">
+<h3>Datos climáticos<a class="headerlink" href="#datos-climaticos" title="Permalink to this headline">¶</a></h3>
+<p>De manera predeterminada, el modelo de índice de temperatura se basa en el conjunto de datos climáticos globales <a class="reference external" href="https://crudata.uea.ac.uk/cru/data/hrg/">CRU TS</a> de <span class="math notranslate nohighlight">\(0.5^{\circ} \times 0.5^{\circ}\)</span>. Estos datos climáticos luego se reducen a una cuadrícula de mayor resolución para permitir un conjunto de datos dependiente de la elevación. Se puede acceder a los datos climáticos a la altura de referencia utilizados para impulsar el modelo de índice de temperatura y determinar el <span class="math notranslate nohighlight">\(\mu^*\)</span> calibrado del glaciar seleccionado a través del directorio de glaciares:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="n">gdir</span><span class="o">.</span><span class="n">get_filepath</span><span class="p">(</span><span class="s1">&#39;climate_historical&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/OGGM/ti_model/per_glacier/RGI60-11/RGI60-11.00/RGI60-11.00897/climate_historical.nc
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esta es la ruta temporal donde OGGM almacenó sus datos climáticos en su máquina. Puedes leer los datos climáticos usando <code class="docutils literal notranslate"><span class="pre">xarray</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climate</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
+<span class="n">climate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:  (time: 1416)
+Coordinates:
+  * time     (time) datetime64[ns] 1901-10-01 1901-11-01 ... 2019-09-01
+Data variables:
+    prcp     (time) float32 109.9 63.26 175.9 109.2 ... 82.08 121.2 187.7 114.2
+    temp     (time) float32 -0.7733 -6.977 -7.38 -7.7 ... 6.3 8.193 7.52 4.213
+Attributes:
+    ref_hgt:         2700.0
+    ref_pix_lon:     10.75
+    ref_pix_lat:     46.750000000000014
+    ref_pix_dis:     5629.5667533869655
+    climate_source:  CRU TS4.04
+    hydro_yr_0:      1902
+    hydro_yr_1:      2019
+    author:          OGGM
+    author_info:     Open Global Glacier Model</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-bb087b62-fcfd-426a-bd0e-cb487fed09bb' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bb087b62-fcfd-426a-bd0e-cb487fed09bb' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 1416</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-7d7760a4-eaa0-4be6-8aee-58097423b273' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7d7760a4-eaa0-4be6-8aee-58097423b273' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1901-10-01 ... 2019-09-01</div><input id='attrs-b06c6bba-e061-41da-bec2-3a0d9cd4d55a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b06c6bba-e061-41da-bec2-3a0d9cd4d55a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c0606409-e85e-4a40-839d-0f5c54e3e5fc' class='xr-var-data-in' type='checkbox'><label for='data-c0606409-e85e-4a40-839d-0f5c54e3e5fc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1901-10-01T00:00:00.000000000&#x27;, &#x27;1901-11-01T00:00:00.000000000&#x27;,
+       &#x27;1901-12-01T00:00:00.000000000&#x27;, ..., &#x27;2019-07-01T00:00:00.000000000&#x27;,
+       &#x27;2019-08-01T00:00:00.000000000&#x27;, &#x27;2019-09-01T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1e388ee6-bc58-461a-a0f3-188e02c7912b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1e388ee6-bc58-461a-a0f3-188e02c7912b' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>prcp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-48661f95-42ef-4adb-ae43-7f93bca7da3c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-48661f95-42ef-4adb-ae43-7f93bca7da3c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d50b4f65-2006-4969-9bc0-7b7948d0cd84' class='xr-var-data-in' type='checkbox'><label for='data-d50b4f65-2006-4969-9bc0-7b7948d0cd84' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>kg m-2</dd><dt><span>long_name :</span></dt><dd>total monthly precipitation amount</dd></dl></div><div class='xr-var-data'><pre>array([109.8849 ,  63.25953, 175.92877, ..., 121.19765, 187.73975, 114.17238],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>temp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1329f474-d179-4968-8241-1c42e965d2b7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1329f474-d179-4968-8241-1c42e965d2b7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7e654d69-c60f-4561-84c2-9516543442dc' class='xr-var-data-in' type='checkbox'><label for='data-7e654d69-c60f-4561-84c2-9516543442dc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degC</dd><dt><span>long_name :</span></dt><dd>2m temperature at height ref_hgt</dd></dl></div><div class='xr-var-data'><pre>array([-0.773333, -6.976667, -7.38    , ...,  8.193335,  7.52    ,  4.213333],
+      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8c419ac3-e598-4e0a-ab04-d56d8da67ddf' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8c419ac3-e598-4e0a-ab04-d56d8da67ddf' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ref_hgt :</span></dt><dd>2700.0</dd><dt><span>ref_pix_lon :</span></dt><dd>10.75</dd><dt><span>ref_pix_lat :</span></dt><dd>46.750000000000014</dd><dt><span>ref_pix_dis :</span></dt><dd>5629.5667533869655</dd><dt><span>climate_source :</span></dt><dd>CRU TS4.04</dd><dt><span>hydro_yr_0 :</span></dt><dd>1902</dd><dt><span>hydro_yr_1 :</span></dt><dd>2019</dd><dt><span>author :</span></dt><dd>OGGM</dd><dt><span>author_info :</span></dt><dd>Open Global Glacier Model</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>El conjunto de datos climáticos tiene dos variables, la precipitación total mensual <code class="docutils literal notranslate"><span class="pre">prcp</span></code> y la temperatura media mensual <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Calculemos el ciclo medio anual de temperatura media y precipitación total,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">annual_cycle</span> <span class="o">=</span> <span class="n">climate</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>y graficarlo, para obtener una vista intuitiva de las condiciones climáticas en el sitio del glaciar seleccionado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">calendar</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">annual_cycle</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">annual_cycle</span><span class="o">.</span><span class="n">temp</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">annual_cycle</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">annual_cycle</span><span class="o">.</span><span class="n">prcp</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Average temperature / (°C)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Total precipitation / (mm)&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">annual_cycle</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_abbr</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">annual_cycle</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">values</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/temperature_index_model_es_53_0.png" src="../_images/temperature_index_model_es_53_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="datos-de-balance-de-masa-de-referencia">
+<h3>Datos de balance de masa de referencia<a class="headerlink" href="#datos-de-balance-de-masa-de-referencia" title="Permalink to this headline">¶</a></h3>
+<p>OGGM utiliza datos de balance de masa in situ de la base de datos de fluctuaciones de los glaciares del Servicio Mundial de Monitoreo de Glaciares <a class="reference external" href="https://wgms.ch/data_databaseversions/">(WGMS FoGD)</a>. La base de datos Fluctuations of Glaciers (FoG) contiene registros anuales de balance de masa de varios cientos de glaciares en todo el mundo. Actualmente, están disponibles 254 series temporales de balance de masa.</p>
+<p>Estos datos se envían automáticamente con OGGM y se puede acceder a ellos a través del directorio de glaciares:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the reference mass-balance from the WGMS FoG Database</span>
+<span class="n">ref_mb</span> <span class="o">=</span> <span class="n">gdir</span><span class="o">.</span><span class="n">get_ref_mb_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref_mb</span><span class="p">[[</span><span class="s1">&#39;ANNUAL_BALANCE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Annual mass balance: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gdir</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/temperature_index_model_es_58_0.png" src="../_images/temperature_index_model_es_58_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="prediga-el-balance-de-masa">
+<h3>¡Prediga el balance de masa!<a class="headerlink" href="#prediga-el-balance-de-masa" title="Permalink to this headline">¶</a></h3>
+<p>Ahora, estamos listos para calcular el balance de masa del glaciar utilizando el modelo de índice de temperatura: tenemos los parámetros del modelo <span class="math notranslate nohighlight">\(\mu^*\)</span> y <span class="math notranslate nohighlight">\(\epsilon\)</span>, los umbrales para el derretimiento y la precipitación sólida <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y <span class="math notranslate nohighlight">\(T_{ Solid}\)</span> y el conjunto de datos climáticos. Lo último que necesitamos definir son las alturas a las que queremos calcular el balance de masa. Aquí, usamos líneas de flujo de glaciares a lo largo de las cuales se calcula el balance de masa:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fls</span> <span class="o">=</span> <span class="n">gdir</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;inversion_flowlines&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Calcularemos el balance de masa específico en mm w.e. yr<span class="math notranslate nohighlight">\(^{-1}\)</span> para los años en los que se dispone de datos de balance de masa in situ:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ref_mb</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1953 1954 1955 1956 1957 1958 1959 1960 1961 1962 1963 1964 1965 1966
+ 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980
+ 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994
+ 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008
+ 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019]
+</pre></div>
+</div>
+</div>
+</div>
+<p>El balance de masa específico a lo largo de las líneas de flujo dadas se calcula mediante</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;OGGM (calib)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mb_cal</span><span class="o">.</span><span class="n">get_specific_mb</span><span class="p">(</span><span class="n">fls</span><span class="o">=</span><span class="n">fls</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">ref_mb</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para este cálculo asumimos una densidad de hielo promedio de</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rho_ice = </span><span class="si">{}</span><span class="s1"> kg m^-3.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">PARAMS</span><span class="p">[</span><span class="s1">&#39;ice_density&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rho_ice = 900.0 kg m^-3.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora, podemos comparar el balance de masa real in situ con el balance de masa modelado:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;ANNUAL_BALANCE&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;OGGM (calib)&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Modelled&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Specific mass balance / (mm w.e. y$^{-1}$)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/temperature_index_model_es_69_0.png" src="../_images/temperature_index_model_es_69_0.png" />
+</div>
+</div>
+<p>No se ve tan mal, ¿verdad? Para evaluar el rendimiento del modelo, es útil representar los datos en un diagrama de dispersión:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;ANNUAL_BALANCE&#39;</span><span class="p">],</span> <span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;OGGM (calib)&#39;</span><span class="p">],</span> <span class="s1">&#39;ok&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;ANNUAL_BALANCE&#39;</span><span class="p">],</span> <span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;ANNUAL_BALANCE&#39;</span><span class="p">],</span> <span class="s1">&#39;-r&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Observed&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;OGGM (calib)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/temperature_index_model_es_71_0.png" src="../_images/temperature_index_model_es_71_0.png" />
+</div>
+</div>
+<p>Si los puntos estuvieran alineados a lo largo de la línea roja, el modelo predeciría perfectamente el balance de masa. En general, el modelo sobreestima el balance de masa en magnitud: el diagrama de dispersión muestra una pendiente más pronunciada que la línea roja 1 a 1. Esto se debe a que el balance de masa específico depende no solo del clima sino también de la superficie del glaciar.</p>
+<p>OGGM calcula el balance de masa específico como un promedio ponderado del área del glaciar utilizando una geometría de glaciar constante fijada en la fecha <a class="reference external" href="https://www.glims.org/RGI/">Randolph Glacier Inventory</a>, p. <span class="math notranslate nohighlight">\(2003\)</span> para la mayoría de los glaciares de los Alpes europeos. La geometría de los glaciares es en sí misma una función del clima y puede cambiar significativamente con el tiempo. Por lo tanto, suponer una geometría glaciar constante durante un período de tiempo de diferentes condiciones climáticas puede resultar en un sesgo sistemático del modelo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bias</span> <span class="o">=</span> <span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;OGGM (calib)&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ref_mb</span><span class="p">[</span><span class="s1">&#39;ANNUAL_BALANCE&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bias</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/temperature_index_model_es_75_0.png" src="../_images/temperature_index_model_es_75_0.png" />
+</div>
+</div>
+<p>El sesgo es positivo al comienzo de las mediciones in situ y muestra una tendencia negativa. Cuando se mantiene constante el área del glaciar, un sesgo positivo (negativo) significa que la sensibilidad a la temperatura calibrada <span class="math notranslate nohighlight">\(\mu^*\)</span> del glaciar es demasiado baja (alta) durante períodos de tiempo de climas más fríos (más cálidos). Puede encontrar un experimento simple sobre la sensibilidad del balance de masa específico en el cambio climático y el área de la superficie del glaciar en este <a class="reference external" href="https://oggm.org/2017/10/01/specmb-ela/">blog post</a>.</p>
+</div>
+</div>
+<div class="section" id="llevate-puntos-a-casa">
+<h2>Llévate puntos a casa<a class="headerlink" href="#llevate-puntos-a-casa" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Hay dos tipos diferentes de modelos de fusión: el modelo de balance de energía y el modelo de índice de temperatura</p></li>
+<li><p>El modelo de índice de temperatura es la simplificación computacionalmente eficiente del modelo de balance de energía</p></li>
+<li><p>Los modelos de índice de temperatura asumen una relación empírica entre la temperatura del aire y las tasas de fusión</p></li>
+<li><p>Los modelos de índice de temperatura se pueden extender para modelar el balance de masa de los glaciares agregando precipitación sólida como parámetro del modelo</p></li>
+<li><p>El resultado del modelo está significativamente influenciado por la elección de <span class="math notranslate nohighlight">\(T_{Melt}\)</span> y <span class="math notranslate nohighlight">\(T_{Solid}\)</span></p></li>
+<li><p>La sensibilidad a la temperatura de un glaciar no es constante en el tiempo <span class="math notranslate nohighlight">\(\mu^* = \mu^*(t)\)</span></p></li>
+<li><p>El balance de masa específico es función del clima y de la superficie del glaciar</p></li>
+</ul>
+</div>
+<div class="section" id="referencias">
+<h2>Referencias<a class="headerlink" href="#referencias" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Hock R., (2003). Modelado del índice de temperatura de fusión en áreas montañosas. <em>Revista de Hidrología</em>, 281, 104-115. <a class="reference external" href="https://doi.org/10.1016/S0022-1694(03)00257-9">https://doi.org/10.1016/S0022-1694(03)00257-9</a></p></li>
+<li><p>Marzeion B., Jarosch A. H. &amp; Hofer M. (2012). Cambio pasado y futuro del nivel del mar a partir del balance de masa superficial de los glaciares. <em>La criosfera</em>, 6, 1295-1322. <a class="reference external" href="https://doi.org/10.5194/tc-6-1295-2012">https://doi.org/10.5194/tc-6-1295-2012</a></p></li>
+</ul>
+</div>
+<div class="section" id="que-sigue">
+<h2>¿Que sigue?<a class="headerlink" href="#que-sigue" title="Permalink to this headline">¶</a></h2>
+<p>xx_markdown_enlace_xx</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./oggm-edu-es"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="surging_experiment_es.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Experimentos de levantamiento de glaciares</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="accumulation_and_ablation_es.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Acumulación, ablación, balance de masa y el flujo de hielo resultante</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By OGGM e.V. y contribudores OGGM<br/>
+    
+      <div class="extra_footer">
+        <p>
+These notebooks are licensed under a <a href="https://github.com/OGGM/tutorials/blob/master/LICENSE.txt" target="_blank">BSD-3-Clause license</a>.
+<br>
+&copy; Copyright 2014-2022.
+</p>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

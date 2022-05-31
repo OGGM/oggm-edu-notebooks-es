@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradientes de balance de masa (MBG) y su influencia en el flujo glaciar &#8212; Notebooks OGGM-Edu</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Experimentos de levantamiento de glaciares" href="surging_experiment_es.html" />
+    <link rel="prev" title="Influencia de los parámetros del flujo de hielo en el tamaño del glaciar" href="ice_flow_parameters_es.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-106829797-2', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notebooks OGGM-Edu</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bienvenidos.html">
+   Bienvenidos en los notebooks OGGM-Edu
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Principiantes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_with_notebooks_es.html">
+   Introducción a Jupyter Notebook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Modelado de líneas de flujo
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="edu_intro_es.html">
+   Primeros pasos con OGGM Edu: glaciares idealizados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ice_flow_parameters_es.html">
+   Influencia de los parámetros del flujo de hielo en el tamaño del glaciar
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Gradientes de balance de masa (MBG) y su influencia en el flujo glaciar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surging_experiment_es.html">
+   Experimentos de levantamiento de glaciares
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Balance de masa
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="temperature_index_model_es.html">
+   Modelos de índice de temperatura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="accumulation_and_ablation_es.html">
+   Acumulación, ablación, balance de masa y el flujo de hielo resultante
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="advance_and_retreat_es.html">
+   Avance y retroceso de los glaciares
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Los glaciares como recursos hídricos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="glacier_water_resources_es.html">
+   Los glaciares como recursos hídricos: parte 1 (clima idealizado)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glacier_water_resources_projections_es.html">
+   Los glaciares como recursos hídricos: parte 2 (proyecciones)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/oggm-edu-es/mass_balance_gradients_es.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/OGGM/oggm-edu-notebooks-es"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/OGGM/oggm-edu-notebooks-es/issues/new?title=Issue%20on%20page%20%2Foggm-edu-es/mass_balance_gradients_es.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/OGGM/oggm-edu-notebooks-es/edit/master/./oggm-edu-es/mass_balance_gradients_es.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/OGGM/oggm-edu-notebooks-es/master?urlpath=lab/tree/./oggm-edu-es/mass_balance_gradients_es.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://classroom.oggm.org/hub/user-redirect/git-pull?repo=https://github.com/OGGM/oggm-edu-notebooks-es&urlpath=lab/tree/oggm-edu-notebooks-es/./oggm-edu-es/mass_balance_gradients_es.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inicializando-el-glaciar">
+   Inicializando el glaciar
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cambiando-el-gradiente-de-balance-de-masa-mbg">
+   Cambiando el gradiente de balance de masa (MBG)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creacion-de-un-perfil-de-balance-de-masa-complejo">
+     Creación de un perfil de balance de masa complejo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estado-de-equilibrio">
+   Estado de equilibrio
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tiempo-de-respuesta">
+   Tiempo de respuesta
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-sigue">
+   ¿Que sigue?
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Gradientes de balance de masa (MBG) y su influencia en el flujo glaciar</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inicializando-el-glaciar">
+   Inicializando el glaciar
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cambiando-el-gradiente-de-balance-de-masa-mbg">
+   Cambiando el gradiente de balance de masa (MBG)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creacion-de-un-perfil-de-balance-de-masa-complejo">
+     Creación de un perfil de balance de masa complejo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estado-de-equilibrio">
+   Estado de equilibrio
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tiempo-de-respuesta">
+   Tiempo de respuesta
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-sigue">
+   ¿Que sigue?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="gradientes-de-balance-de-masa-mbg-y-su-influencia-en-el-flujo-glaciar">
+<h1>Gradientes de balance de masa (MBG) y su influencia en el flujo glaciar<a class="headerlink" href="#gradientes-de-balance-de-masa-mbg-y-su-influencia-en-el-flujo-glaciar" title="Permalink to this headline">¶</a></h1>
+<p>En el cuaderno de introducción, mencionamos brevemente el gradiente de balance de masa de un glaciar. Esto es lo que vamos a echar un vistazo más de cerca ahora.
+Si el concepto de balance de masa es completamente nuevo para usted, lea brevemente sobre él <a class="reference external" href="http://www.antarcticglaciers.org/glacier-processes/introduction-glacier-mass-balance/">aqui</a>, hasta el párrafo “<em>Entonces, ¿qué es el balance de masa de glaciares?</em>”.
+En este cuaderno, configuraremos algunos glaciares simples para explorar más a fondo qué características de los glaciares cambian con diferentes gradientes de balance de masa. También veremos los temas de volumen y tiempo de respuesta.</p>
+<p>Objetivos de este cuaderno:</p>
+<ul class="simple">
+<li><p>El estudiante será capaz de explicar los términos:</p></li>
+<li><p>Gradiente de balance de masa,</p></li>
+<li><p>Estado de equilibrio</p></li>
+<li><p>Tiempo de respuesta.</p></li>
+</ul>
+<p>Primero, tenemos que importar las clases relevantes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierBed</span><span class="p">,</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">GlacierCollection</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_16692/777801523.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierBed</span><span class="p">,</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">GlacierCollection</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;oggm_edu&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="inicializando-el-glaciar">
+<h2>Inicializando el glaciar<a class="headerlink" href="#inicializando-el-glaciar" title="Permalink to this headline">¶</a></h2>
+<p>Comenzamos configurando un glaciar simple con un lecho rocoso lineal (ver <a class="reference internal" href="edu_intro_es.html"><span class="doc std std-doc">edu_intro</span></a>) para generar un punto de partida para nuestro experimento.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bed</span>
+<span class="n">bed</span> <span class="o">=</span> <span class="n">GlacierBed</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">3400</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="c1"># Mass balance</span>
+<span class="n">mass_balance</span> <span class="o">=</span> <span class="n">MassBalance</span><span class="p">(</span><span class="n">ela</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Glacier</span>
+<span class="n">glacier</span> <span class="o">=</span> <span class="n">Glacier</span><span class="p">(</span><span class="n">bed</span><span class="o">=</span><span class="n">bed</span><span class="p">,</span> <span class="n">mass_balance</span><span class="o">=</span><span class="n">mass_balance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cambiando-el-gradiente-de-balance-de-masa-mbg">
+<h2>Cambiando el gradiente de balance de masa (MBG)<a class="headerlink" href="#cambiando-el-gradiente-de-balance-de-masa-mbg" title="Permalink to this headline">¶</a></h2>
+<p>El MBG se define como el cambio del balance de masa con altitud <a class="reference external" href="#References">¹</a>. Depende en gran medida del clima en el glaciar <a class="reference external" href="#References">¹</a>.
+Echemos un vistazo a los efectos del MBG creando algunos glaciares con diferentes gradientes. En el cuaderno de introducción, nuestro glaciar tenía una pendiente de 4 mm/m, así que agreguemos un glaciar con una pendiente más débil y otro con una pendiente más fuerte.
+Volveremos a hacer uso de <code class="docutils literal notranslate"><span class="pre">GlacierCollection</span></code> para progresar rápidamente y visualizar los glaciares.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">GlacierCollection</span><span class="p">()</span>
+<span class="c1"># Fill the collection. This time we change the attributes on creation.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">glacier</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">attributes_to_change</span><span class="o">=</span>
+                <span class="p">{</span><span class="s1">&#39;gradient&#39;</span><span class="p">:[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">]}</span>
+               <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creacion-de-un-perfil-de-balance-de-masa-complejo">
+<h3>Creación de un perfil de balance de masa complejo<a class="headerlink" href="#creacion-de-un-perfil-de-balance-de-masa-complejo" title="Permalink to this headline">¶</a></h3>
+<p>También es posible crear un perfil de balance de masa más complejo.
+Esto se logra pasando una lista de gradientes y otra lista con la altitud de los puntos de ruptura entre ellos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add complex mb profile</span>
+<span class="n">complex_mb</span> <span class="o">=</span> <span class="n">MassBalance</span><span class="p">(</span><span class="n">ela</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+                         <span class="n">breakpoints</span><span class="o">=</span><span class="p">[</span><span class="mi">2700</span><span class="p">,</span> <span class="mi">2250</span><span class="p">,</span> <span class="mi">1800</span><span class="p">])</span>
+<span class="n">glacier_complex_mb</span> <span class="o">=</span> <span class="n">Glacier</span><span class="p">(</span><span class="n">bed</span><span class="o">=</span><span class="n">bed</span><span class="p">,</span> <span class="n">mass_balance</span><span class="o">=</span><span class="n">complex_mb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add the new glacier to the collection.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">glacier_complex_mb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Progress collection to the same year.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">progress_to_year</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot_mass_balance</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Un gradiente de balance de masa más fuerte (línea más plana en el gráfico anterior) implica un cambio mayor del balance de masa con la altitud.
+Podemos ver esto en el gráfico anterior: el balance de masa anual apenas cambia con la altitud para el glaciar con el gradiente de balance de masa más débil (azul), mientras que hay una diferencia considerable entre el balance de masa anual superior e inferior para el glaciar con la masa más fuerte. gradiente de equilibrio (verde).
+Esto a su vez afecta el crecimiento del glaciar.
+Un fuerte gradiente de balance de masa implica que se agrega más hielo a la zona de acumulación mientras que se extrae más hielo de la zona de ablación cada año en comparación con un glaciar con un gradiente más débil.
+Esto da como resultado un mayor flujo de hielo y, por lo tanto, el glaciar crece más rápido.
+Esta es la razón por la cual el glaciar con el gradiente más fuerte exhibe el mayor crecimiento durante nuestros experimentos (Glaciar verde en el gráfico de colección arriba).</p>
+<div class="alerta alerta-éxito">
+<detalles><summary><b>¿Qué opinas? ¿Dónde encontramos glaciares con altos MBG?</b> <i>Haz clic para obtener más detalles</i></summary>
+Encontrará una breve explicación en este [paragraph](http://www.antarcticglaciers.org/modern-glaciers/introduction-glacier-mass-balance/#SECTION_3) en AntarcticGlaciers.org.
+</div></div>
+</div>
+<div class="section" id="estado-de-equilibrio">
+<h2>Estado de equilibrio<a class="headerlink" href="#estado-de-equilibrio" title="Permalink to this headline">¶</a></h2>
+<p>Los glaciares cambian su geometría como una forma de adaptarse al clima<a class="reference external" href="#References">³</a>. Si la acumulación aumenta, el glaciar crecerá más abajo del ELA para aumentar la ablación. De manera similar, si la temperatura aumenta y la ablación aumenta, la longitud del glaciar disminuirá.
+Si el clima permanece constante durante un tiempo suficiente, los glaciares alcanzarán un estado de equilibrio con su clima, donde la acumulación = ablación <a class="reference external" href="#References">⁴</a>.
+Con esto en mente, veremos qué tan rápido nuestros glaciares, con diferentes gradientes, alcanzan este estado y compararemos sus formas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We reset the collection.</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">GlacierCollection</span><span class="p">()</span>
+<span class="c1"># Fill the collection. This time we change the attributes on creation.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">glacier</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">attributes_to_change</span><span class="o">=</span>
+                <span class="p">{</span><span class="s1">&#39;gradient&#39;</span><span class="p">:[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">]}</span>
+               <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we progress the glaciers to equilibrium.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">progress_to_equilibrium</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot it</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los diferentes glaciares alcanzan su estado de equilibrio después de un número diferente de años. ¿Qué nos muestra la figura? ¿Qué glaciar es el más grueso y largo? Veamos números específicos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El glaciar con el gradiente más fuerte alcanza primero el estado de equilibrio. Este es también el glaciar más grande y más largo.</p>
+</div>
+<div class="section" id="tiempo-de-respuesta">
+<h2>Tiempo de respuesta<a class="headerlink" href="#tiempo-de-respuesta" title="Permalink to this headline">¶</a></h2>
+<p>El tiempo de respuesta del glaciar es el período de tiempo que necesita un glaciar para ajustar su geometría a los cambios en el balance de masa causados ​​por el cambio climático y alcanzar un nuevo estado de equilibrio.
+Hay algunas definiciones diferentes para su cálculo, OGGM-Edu usa la definición de Oerlemans (vea la fórmula a continuación) <a class="reference external" href="#References">⁵</a>.
+Un glaciar OGGM-Edu tiene un atributo <code class="docutils literal notranslate"><span class="pre">.response_time</span></code> que se calcula en función de la diferencia entre los dos últimos estados de equilibrio en la historia del glaciar.
+Hasta ahora solo te hemos mostrado cómo hacer progresar un glaciar hasta el equilibrio, pero no cómo dejarlo y llegar a un segundo.
+Este será el primer paso para obtener el tiempo de respuesta de un glaciar.
+Usamos el glaciar desde el comienzo del cuaderno.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the state, everything should be zero/nan here.</span>
+<span class="n">glacier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Primero progresamos el glaciar al equilibrio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">progress_to_equilibrium</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos acceder a los estados de equilibrio almacenados de un glaciar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">eq_states</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora queremos establecer un escenario de cambio climático para el glaciar.
+Esto se hace fácilmente con el método <code class="docutils literal notranslate"><span class="pre">.add_temperature_bias</span></code>.
+Este método toma un sesgo de temperatura deseado (<span class="math notranslate nohighlight">\(+/-\)</span>) y una duración, que especifica cuánto tardará el glaciar en alcanzar el estado climático.
+Por ejemplo, si establecemos el sesgo en 1 y la duración en 50, el clima tardará 50 años en calentarse 1 grado.
+Cuando un glaciar tiene un escenario de cambio climático, los métodos <code class="docutils literal notranslate"><span class="pre">progress_</span></code> funcionarán internamente de manera un poco diferente, pero esto no es algo que notará.
+Dado que estamos puramente interesados ​​en la respuesta del glaciar, creamos un escenario de cambio climático con una duración de 1 año.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a climate change scenario</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">add_temperature_bias</span><span class="p">(</span><span class="n">bias</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alerta alerta-éxito">
+<detalles><resumen><b>
+¿Cómo responde el ELA si elevamos la temperatura?</b> <i>Haga clic para obtener una pista</i></summary>
+El aumento de la temperatura aumentará el tamaño del área de ablación del glaciar y, por lo tanto, aumentará la ELA.
+</detalles>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can then progress the glacier to equilibrium again</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">progress_to_equilibrium</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">eq_states</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El siguiente paso es calcular los tiempos de respuesta de nuestros glaciares. Uno podría pensar que es tan simple como mirar los años anteriores y hacer una simple resta. ¡Sin embargo, éste no es el caso! En realidad, la velocidad a la que cambia un glaciar es cada vez menor y nunca se alcanza realmente un estado de equilibrio completo. Debido a esto, el tiempo de respuesta se considera el tiempo que le ha tomado al glaciar completar la mayor parte del ajuste, más específicamente todo menos un factor de <span class="math notranslate nohighlight">\(1/e\)</span>.
+Para modelos numéricos como nuestros glaciares, es común usar <a class="reference external" href="https://www.tandfonline.com/doi/pdf/10.1080/00040851.1997.12003238?needAccess=true">volume response time</a>, de Oerlemans <a class="reference external" href="https://www.tandfonline.com/doi/pdf/10.1080/00040851.1997.12003238?needAccess=true">volume response time</a>:
+$<span class="math notranslate nohighlight">\(
+\tau = t \left(V=V_2 - \frac{V_2 - V_1}{e}\right)
+\)</span><span class="math notranslate nohighlight">\(
+donde \)</span>V_1<span class="math notranslate nohighlight">\( y \)</span>V_2$ corresponden al volumen del glaciar en el estado de equilibrio inicial y nuevo respectivamente.
+Afortunadamente, esto lo hace nuestro objeto glaciar, por lo que solo podemos echar un vistazo al atributo <code class="docutils literal notranslate"><span class="pre">.response_time</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">response_time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>o simplemente mira la representación</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora que hemos introducido el concepto de tiempo de respuesta, podemos aplicarlo y ver cómo los diferentes gradientes de balance de masa afectan el tiempo de respuesta.
+Para ello necesitamos una nueva colección.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bed</span>
+<span class="n">bed</span> <span class="o">=</span> <span class="n">GlacierBed</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">3400</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="c1"># Mass balance</span>
+<span class="n">mass_balance</span> <span class="o">=</span> <span class="n">MassBalance</span><span class="p">(</span><span class="n">ela</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Glacier</span>
+<span class="n">glacier</span> <span class="o">=</span> <span class="n">Glacier</span><span class="p">(</span><span class="n">bed</span><span class="o">=</span><span class="n">bed</span><span class="p">,</span> <span class="n">mass_balance</span><span class="o">=</span><span class="n">mass_balance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">GlacierCollection</span><span class="p">()</span>
+<span class="c1"># Fill the collection. This time we change the attributes on creation.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">glacier</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">attributes_to_change</span><span class="o">=</span>
+                <span class="p">{</span><span class="s1">&#39;gradient&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">]}</span>
+               <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">progress_to_equilibrium</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Luego tenemos que configurar un escenario de cambio climático para los glaciares en la colección.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same scenario for all the glaciers.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">glaciers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_temperature_bias</span><span class="p">(</span><span class="n">bias</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">glaciers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">add_temperature_bias</span><span class="p">(</span><span class="n">bias</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">glaciers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">add_temperature_bias</span><span class="p">(</span><span class="n">bias</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Progress to equilibrium again</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">progress_to_equilibrium</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">plot_history</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>También podemos mirar la historia del estado de uno de los glaciares.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plots the glacier outline for the equilibrium states.</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">glaciers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot_state_history</span><span class="p">(</span><span class="n">eq_states</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El glaciar con MBG más débil necesita más tiempo para adaptarse a un cambio climático en comparación con los otros glaciares. Por otro lado, el glaciar con el gradiente más fuerte solo necesita alrededor de dos décadas para ajustar su forma al nuevo clima (Un ejemplo del mundo real: el glaciar Franz Josef en Nueva Zelanda<a class="reference external" href="#References">⁶</a>)<a class="reference external" href="#References">⁶</a>. El tiempo de respuesta de los glaciares con gradientes débiles es en realidad mucho más largo que 200 años, en realidad más cercano a 2000 años.</p>
+<div class="alerta alerta-éxito">
+<detalles><resumen><b>¿Por qué la MBG cambia el tiempo de respuesta de un glaciar? ¿Qué otros factores, además del MBG, cree que afectan el tiempo de respuesta de un glaciar?</b> <i>Haga clic en mí para obtener una pista</i></summary>
+El MBG afecta la rapidez con la que fluirá el glaciar y, a su vez, la rapidez con la que puede cambiar la forma y el tamaño del glaciar. En general, debemos considerar que el tiempo de respuesta también depende de otras características como el tipo de glaciar, el tamaño, la pendiente del fondo y la elevación promedio de la superficie.
+</detalles>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2>Referencias<a class="headerlink" href="#referencias" title="Permalink to this headline">¶</a></h2>
+<p>¹ Rasmussen, L. A. y Andreassen, L. M. (2005). Gradientes estacionales de balance de masa en Noruega. <em>Revista de Glaciología</em>, 51(175), 601-606.
+² Oerlemans, J. y Fortuin, J. P. F. (1992). Sensibilidad de los glaciares y pequeños casquetes polares al efecto invernadero. <em>Ciencia, 258(5079)</em>, 115-117.
+³Oerlemans, J. (2001). <em>Glaciares y cambio climático</em>. Prensa CRC.
+⁴ Enciclopedia de nieve, hielo y glaciares, V.P. Singh, P. Singh y U.K. Haritashya, Editores. 2011, Springer: Dordrecht, Países Bajos. pags. 245-256.
+⁵ Oerlemans, J. (1997). Sensibilidad climática del glaciar Franz Josef, Nueva Zelanda, según lo revelado por el modelado numérico. <em>Investigación sobre el Ártico y los Alpes</em>, 29(2), 233-239.
+⁶ Anderson, B., Lawson, W. y Owens, I. (2008). Respuesta del glaciar Franz Josef Ka Roimata o Hine Hukatere al cambio climático. Cambio Global y Planetario, 63(1), 23-30.
+⁷ Cuffey, K. M. y Paterson, WSB <em>La Física de los Glaciares, 4ª edición</em>, 704 (Academic Press, 2010).</p>
+</div>
+<div class="section" id="que-sigue">
+<h2>¿Que sigue?<a class="headerlink" href="#que-sigue" title="Permalink to this headline">¶</a></h2>
+<p>xx_markdown_enlace_xx</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./oggm-edu-es"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="ice_flow_parameters_es.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Influencia de los parámetros del flujo de hielo en el tamaño del glaciar</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="surging_experiment_es.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Experimentos de levantamiento de glaciares</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By OGGM e.V. y contribudores OGGM<br/>
+    
+      <div class="extra_footer">
+        <p>
+These notebooks are licensed under a <a href="https://github.com/OGGM/tutorials/blob/master/LICENSE.txt" target="_blank">BSD-3-Clause license</a>.
+<br>
+&copy; Copyright 2014-2022.
+</p>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

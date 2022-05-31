@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acumulación, ablación, balance de masa y el flujo de hielo resultante &#8212; Notebooks OGGM-Edu</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Avance y retroceso de los glaciares" href="advance_and_retreat_es.html" />
+    <link rel="prev" title="Modelos de índice de temperatura" href="temperature_index_model_es.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-106829797-2', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notebooks OGGM-Edu</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bienvenidos.html">
+   Bienvenidos en los notebooks OGGM-Edu
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Principiantes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_with_notebooks_es.html">
+   Introducción a Jupyter Notebook
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Modelado de líneas de flujo
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="edu_intro_es.html">
+   Primeros pasos con OGGM Edu: glaciares idealizados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ice_flow_parameters_es.html">
+   Influencia de los parámetros del flujo de hielo en el tamaño del glaciar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mass_balance_gradients_es.html">
+   Gradientes de balance de masa (MBG) y su influencia en el flujo glaciar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surging_experiment_es.html">
+   Experimentos de levantamiento de glaciares
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Balance de masa
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="temperature_index_model_es.html">
+   Modelos de índice de temperatura
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Acumulación, ablación, balance de masa y el flujo de hielo resultante
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="advance_and_retreat_es.html">
+   Avance y retroceso de los glaciares
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Los glaciares como recursos hídricos
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="glacier_water_resources_es.html">
+   Los glaciares como recursos hídricos: parte 1 (clima idealizado)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glacier_water_resources_projections_es.html">
+   Los glaciares como recursos hídricos: parte 2 (proyecciones)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/oggm-edu-es/accumulation_and_ablation_es.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/OGGM/oggm-edu-notebooks-es"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/OGGM/oggm-edu-notebooks-es/issues/new?title=Issue%20on%20page%20%2Foggm-edu-es/accumulation_and_ablation_es.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/OGGM/oggm-edu-notebooks-es/edit/master/./oggm-edu-es/accumulation_and_ablation_es.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/OGGM/oggm-edu-notebooks-es/master?urlpath=lab/tree/./oggm-edu-es/accumulation_and_ablation_es.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://classroom.oggm.org/hub/user-redirect/git-pull?repo=https://github.com/OGGM/oggm-edu-notebooks-es&urlpath=lab/tree/oggm-edu-notebooks-es/./oggm-edu-es/accumulation_and_ablation_es.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#procesos-de-acumulacion">
+   Procesos de acumulación
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#procesos-de-ablacion">
+   Procesos de ablación
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#balance-de-masa">
+   Balance de masa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acumulacion-ablacion-y-flujo-de-hielo-con-oggm">
+   Acumulación, ablación y flujo de hielo con OGGM
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#establece-la-escena">
+     Establece la escena
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#balance-de-masa-de-un-glaciar-en-equilibrio">
+     Balance de masa de un glaciar en equilibrio
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flujo-de-hielo-a-lo-largo-de-un-glaciar-en-equilibrio">
+     Flujo de hielo a lo largo de un glaciar en equilibrio
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#llevate-puntos-a-casa">
+   Llévate puntos a casa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-sigue">
+   ¿Que sigue?
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Acumulación, ablación, balance de masa y el flujo de hielo resultante</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#procesos-de-acumulacion">
+   Procesos de acumulación
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#procesos-de-ablacion">
+   Procesos de ablación
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#balance-de-masa">
+   Balance de masa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acumulacion-ablacion-y-flujo-de-hielo-con-oggm">
+   Acumulación, ablación y flujo de hielo con OGGM
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#establece-la-escena">
+     Establece la escena
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#balance-de-masa-de-un-glaciar-en-equilibrio">
+     Balance de masa de un glaciar en equilibrio
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flujo-de-hielo-a-lo-largo-de-un-glaciar-en-equilibrio">
+     Flujo de hielo a lo largo de un glaciar en equilibrio
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#llevate-puntos-a-casa">
+   Llévate puntos a casa
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-sigue">
+   ¿Que sigue?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="acumulacion-ablacion-balance-de-masa-y-el-flujo-de-hielo-resultante">
+<h1>Acumulación, ablación, balance de masa y el flujo de hielo resultante<a class="headerlink" href="#acumulacion-ablacion-balance-de-masa-y-el-flujo-de-hielo-resultante" title="Permalink to this headline">¶</a></h1>
+<p>Objetivos de este cuaderno:</p>
+<ul class="simple">
+<li><p>Obtenga una comprensión básica de la acumulación, la ablación y el balance de masa de los glaciares.</p></li>
+<li><p>Comprender el vínculo entre el balance de masa y el flujo de hielo</p></li>
+<li><p>Implementar un experimento simple para calcular el flujo de hielo en un glaciar en equilibrio</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierBed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_16602/3474236874.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">oggm_edu</span> <span class="kn">import</span> <span class="n">Glacier</span><span class="p">,</span> <span class="n">MassBalance</span><span class="p">,</span> <span class="n">GlacierBed</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;oggm_edu&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Aviso de derechos de autor: las siguientes secciones se basan en gran medida en el libro “La física de los glaciares” de Cuffey y Paterson, (2010). Las imágenes del glaciar están tomadas de <a class="reference external" href="http://edu.oggm.org/en/latest/glacier_basics.html">open glacier graphics</a> en OGGM-Edu, realizadas por Anne Maussion, <a class="reference external" href="http://edu.oggm.org/en/latest/glacier_basics.html">open glacier graphics</a>.</em></p>
+<p>El <strong>balance de masa</strong> es el resultado de varios procesos que agregan masa al glaciar (<strong>acumulación</strong>) o eliminan masa del glaciar (<strong>ablación</strong>).
+<img src="https://raw.githubusercontent.com/OGGM/glacier-graphics/master/glacier_intro/png/glacier_03.png" width="33%" align="left">
+<img src="https://raw.githubusercontent.com/OGGM/glacier-graphics/master/glacier_intro/png/glacier_04.png" width="33%" align="left">
+<img src="https://raw.githubusercontent.com/OGGM/glacier-graphics/master/glacier_intro/png/glacier_05.png" width="33%" align="left"></p>
+<div class="section" id="procesos-de-acumulacion">
+<h2>Procesos de acumulación<a class="headerlink" href="#procesos-de-acumulacion" title="Permalink to this headline">¶</a></h2>
+<p>Los procesos de acumulación son todos los procesos que agregan nieve o hielo a un glaciar (superficie). Los procesos de acumulación más importantes se enumeran a continuación en orden de importancia relativa:</p>
+<ul class="simple">
+<li><p><strong>Precipitación sólida</strong> (nevada)
+Las nevadas varían sustancialmente con la latitud y la altitud, donde los principales factores que determinan las tasas de nevadas son:</p></li>
+<li><p><strong>Contenido de vapor de agua</strong> regido por el <a class="reference external" href="https://en.wikipedia.org/wiki/Clausius%E2%80%93Clapeyron_relation#Applications">Clausius-Clapeyron-relationship</a>: cuanto más cálido es el aire, más agua puede contener y, por lo tanto, más precipitación se puede formar</p></li>
+<li><p><strong>Estratificación</strong> de la atmósfera: se requiere una capa bajo cero en la atmósfera inferior para que la precipitación llegue al suelo en forma sólida</p></li>
+<li><p><strong>Tasa de enfriamiento</strong>: se producen altas tasas de nevadas cuando la nieve se enfría rápidamente, p. en sistemas frontales o mediante levantamiento orográfico</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Redistribución por viento y avalanchas</strong>
+La acumulación puede diferir de las nevadas debido a los vientos que transportan la nieve sobre la superficie de un glaciar: la interacción entre el viento y la topografía crea regiones de asimilación y deposición de nieve. Además, las avalanchas pueden acumular cantidades inusualmente grandes de nieve en zonas favorables. Las avalanchas son particularmente importantes para los glaciares de montaña en valles escarpados.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Recongelación del agua de deshielo</strong>
+La recongelación del agua de deshielo puede ocurrir en la superficie del glaciar o dentro del cuerpo del glaciar, donde comúnmente se denomina acumulación englacial o interna. La recongelación del agua de deshielo no contribuye explícitamente al balance de masa del glaciar, pero debe restarse del derretimiento total para evaluar la escorrentía neta.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Deposición</strong>
+La deposición se refiere a los procesos que acumulan agua o vapor de agua directamente en la superficie del glaciar, es decir, lluvia helada y resublimación.</p></li>
+</ul>
+</div>
+<div class="section" id="procesos-de-ablacion">
+<h2>Procesos de ablación<a class="headerlink" href="#procesos-de-ablacion" title="Permalink to this headline">¶</a></h2>
+<p>Los procesos de ablación son todos los procesos que eliminan la nieve o el hielo de un glaciar. Los procesos de ablación más importantes se enumeran a continuación en orden de importancia relativa:</p>
+<ul class="simple">
+<li><p><strong>Derretimiento y escorrentía</strong></p></li>
+</ul>
+<p>El derretimiento y la escorrentía representan la mayor parte de la pérdida de masa de los glaciares y son impulsados ​​por el desequilibrio energético neto entre la atmósfera y la superficie del glaciar. Los contribuyentes más importantes son la radiación neta y los flujos turbulentos de calor sensible y latente. Una vez que la temperatura de la superficie del glaciar está en el punto de fusión, es decir, la superficie del glaciar se calentó lo suficiente, las tasas de fusión aumentan en proporción al flujo neto de energía.</p>
+<ul class="simple">
+<li><p><strong>Sublimación</strong>
+La sublimación se refiere al cambio de fase del estado sólido al estado gaseoso, p. la transición directa de nieve y hielo a vapor de agua. Es la principal fuente de pérdida de masa en ambientes donde las temperaturas superficiales apenas alcanzan el punto de fusión. La sublimación aumenta con el aumento de la temperatura de la superficie y la velocidad del viento y con la disminución de la humedad, por lo tanto, es más fuerte en ambientes secos y cálidos.
+La fusión y la sublimación pueden contrarrestarse entre sí: a medida que la sublimación consume energía y la transforma en calor latente, la energía disponible para la fusión disminuye.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Parto</strong>
+El parto es la separación de bloques de hielo del margen de un glaciar. La mayoría de los partos ocurren en los márgenes de los glaciares que se mantienen o flotan en el agua. El desprendimiento de glaciares que terminan en el océano, los llamados glaciares <em>de marea</em>, representa gran parte de la pérdida de masa, p. para más del 90% de la ablación de la Antártida y aproximadamente la mitad de la ablación de Groenlandia. El proceso también es importante para los glaciares de montaña que terminan en lagos profundos o en el océano.</p></li>
+</ul>
+<p>Este bonito gráfico de <a class="reference external" href="http://www.antarcticglaciers.org/">antarcticglaciers.org</a> resume los diferentes procesos de acumulación y ablación:
+<br>
+<img src="https://www.antarcticglaciers.org/wp-content/uploads/2018/11/glaciers-as-a-system.png" width="60%"></p>
+</div>
+<div class="section" id="balance-de-masa">
+<h2>Balance de masa<a class="headerlink" href="#balance-de-masa" title="Permalink to this headline">¶</a></h2>
+<p>Las tasas de los procesos de acumulación y ablación, sumadas sobre el glaciar y a lo largo del tiempo, determinan el <em>balance de masa del glaciar</em>: <span class="math notranslate nohighlight">\(\dot{m}\)</span>, el cambio en la masa total de nieve y hielo,</p>
+<div class="math notranslate nohighlight">
+\[\dot{m} = \text{acumulación} + \text{ablación}.\]</div>
+<p>La masa se redistribuye continuamente en un glaciar: la masa acumulada en la parte superior del glaciar se transporta hacia abajo, lo que se indica con la flecha negra en la figura anterior. La fuerza impulsora de este <em>flujo de hielo</em> es la gravedad. Por lo tanto, el balance de masa de una región en un glaciar depende no solo de los intercambios de masa inducidos por la acumulación y la ablación, sino también del transporte de hielo impulsado por la gravedad desde el área de acumulación hasta el área de ablación.</p>
+<p>En general, el balance de masa y el flujo de hielo están vinculados a través de la ecuación de continuidad, lo que implica la conservación de la masa,</p>
+<div class="math notranslate nohighlight">
+\[\frac{\H parcial}{\t parcial} = \dot{m} - \nabla \cdot \vec{q},\]</div>
+<p>donde <span class="math notranslate nohighlight">\(H\)</span> es el espesor del hielo, <span class="math notranslate nohighlight">\(\dot{m}\)</span> el balance de masa y <span class="math notranslate nohighlight">\(\vec{q}\)</span> el flujo de hielo.</p>
+</div>
+<div class="section" id="acumulacion-ablacion-y-flujo-de-hielo-con-oggm">
+<h2>Acumulación, ablación y flujo de hielo con OGGM<a class="headerlink" href="#acumulacion-ablacion-y-flujo-de-hielo-con-oggm" title="Permalink to this headline">¶</a></h2>
+<p>En este ejemplo, ilustraremos esencialmente la serie de imágenes <a class="reference external" href="http://edu.oggm.org/en/latest/glacier_basics.html">OGGM-Edu glacier graphics</a> usando OGGM.</p>
+<div class="section" id="establece-la-escena">
+<h3>Establece la escena<a class="headerlink" href="#establece-la-escena" title="Permalink to this headline">¶</a></h3>
+<p>En la introducción de OGGM-Edu <a class="reference external" href="http://edu.oggm.org/en/latest/glacier_basics.html">website</a>, se muestra una sección transversal de un glaciar de montaña típico:
+<img src="https://raw.githubusercontent.com/OGGM/glacier-graphics/master/glacier_intro/png/glacier_01.png" width="60%"></p>
+<p>Tal glaciar se puede reconstruir en OGGM, como se hace en <a class="reference internal" href="edu_intro_es.html"><span class="doc std std-doc">intro notebook</span></a>. Primero, definimos un perfil de lecho rocoso lineal con un área de acumulación más amplia, típico de los glaciares de montaña. El área de acumulación está determinada por el ancho en la parte superior del glaciar, el ancho en intro notebook y la extensión vertical hacia abajo del glaciar.
+Queremos crear un lecho glaciar que tenga 1500 metros de ancho en la parte superior y 500 metros de ancho desde el ELA hacia abajo. También queremos que el área de acumulación represente 1/3 de la extensión vertical total del glaciar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We define a bed with a cone shape accumulation zone and a</span>
+<span class="c1"># square ablation zone.</span>
+<span class="n">top</span> <span class="o">=</span> <span class="mi">3400</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">wide_narrow_bed</span> <span class="o">=</span> <span class="n">GlacierBed</span><span class="p">(</span><span class="n">altitudes</span><span class="o">=</span><span class="p">[</span><span class="n">top</span><span class="p">,</span> <span class="p">(</span><span class="n">top</span><span class="o">-</span><span class="n">bottom</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">bottom</span><span class="p">],</span>
+                             <span class="n">widths</span><span class="o">=</span><span class="p">[</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tracemos la geometría del glaciar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_narrow_bed</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Entonces necesitaremos un balance de masa. En nuestro caso será un balance de masa lineal simple, definido por la altitud de la línea de equilibrio (ELA) y un gradiente de balance de masa lineal con respecto a la elevación (en [mm m<span class="math notranslate nohighlight">\(^{-1}\)</span>]). La altitud de la línea de equilibrio se encuentra en la transición entre la zona de acumulación y ablación Podemos usar la misma expresión que usamos para crear la transición de la cama:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since we have full control over the altitude and width we easily</span>
+<span class="c1"># specify the ELA to match a certain transition.</span>
+<span class="n">mass_balance</span> <span class="o">=</span> <span class="n">MassBalance</span><span class="p">(</span><span class="n">ela</span><span class="o">=</span><span class="p">(</span><span class="n">top</span><span class="o">-</span><span class="n">bottom</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora que tenemos todos los ingredientes para inicializar el glaciar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span> <span class="o">=</span> <span class="n">Glacier</span><span class="p">(</span><span class="n">bed</span><span class="o">=</span><span class="n">wide_narrow_bed</span><span class="p">,</span> <span class="n">mass_balance</span><span class="o">=</span><span class="n">mass_balance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Progresemos el glaciar al equilibrio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">progress_to_equilibrium</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y vamos a trazarlo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success"> <b>Ejercicio</b>: intente cambiar los parámetros de la geometría del glaciar: ancho superior, ancho en el ELA, ELA inferior o agregando más geometría al lecho. ¿Crees que un glaciar más ancho o más estrecho alcanzará el equilibrio más rápido o más lento?
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your input</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="balance-de-masa-de-un-glaciar-en-equilibrio">
+<h3>Balance de masa de un glaciar en equilibrio<a class="headerlink" href="#balance-de-masa-de-un-glaciar-en-equilibrio" title="Permalink to this headline">¶</a></h3>
+<p>Para que un glaciar esté en equilibrio, requerimos que el balance de masa específico (acumulación + ablación) tenga un promedio de cero durante un año en el glaciar. Para verificar este requisito, podemos usar el modelo de balance de masa para calcular el balance de masa anual y calcular un promedio ponderado de ancho en todas las altitudes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">specific_mass_balance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Al final del año, el balance de masa específico total es cero, ¡pero esto no significa que el balance de masa sea cero en todas partes! Una situación muy clásica se parece a la imagen de abajo: balance de masa positivo en la parte superior (más acumulación, menos ablación) y negativo en la lengua (menos acumulación, más ablación).
+<img src="https://raw.githubusercontent.com/OGGM/glacier-graphics/master/glacier_intro/png/glacier_05.png" width="60%" ></p>
+</div>
+<div class="section" id="flujo-de-hielo-a-lo-largo-de-un-glaciar-en-equilibrio">
+<h3>Flujo de hielo a lo largo de un glaciar en equilibrio<a class="headerlink" href="#flujo-de-hielo-a-lo-largo-de-un-glaciar-en-equilibrio" title="Permalink to this headline">¶</a></h3>
+<img src="https://raw.githubusercontent.com/OGGM/glacier-graphics/master/glacier_intro/png/glacier_06.png" width="60%" ><p>En equilibrio, el espesor del hielo <span class="math notranslate nohighlight">\(H\)</span> no cambia con el tiempo y la ecuación de continuidad se reduce a,</p>
+<div class="math notranslate nohighlight">
+\[\punto{m} =\nabla\vec{q}.\]</div>
+<p>Esto significa que el balance de masa del glaciar únicamente determina el flujo de hielo si el glaciar se encuentra en estado estacionario. Por lo tanto, el flujo de hielo se puede calcular integrando verticalmente el balance de masa; en el caso unidimensional, el flujo de hielo es la suma del balance de masa por encima de una determinada altura de referencia <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>Entonces, el flujo de hielo puede calcularse mediante la integración discreta del balance de masa.
+Para este ejemplo, vamos a ir más allá de las capacidades integradas de <code class="docutils literal notranslate"><span class="pre">oggm_edu.Glacier</span></code>.
+Esto también muestra cómo puede acceder a las propiedades del ‘Glaciar’ y crear sus propios gráficos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We compute the ice flux from the mass balance, widths and the resolution.</span>
+<span class="c1"># We take the cumulative sum.</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">glacier</span><span class="o">.</span><span class="n">mass_balance</span><span class="o">.</span><span class="n">get_annual_mb</span><span class="p">(</span><span class="n">glacier</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">surface_h</span><span class="p">)</span>
+<span class="c1"># Multiply by the widths (converted to meters) and resolution to get</span>
+<span class="c1"># the grid point mass balance</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">mb</span> <span class="o">*</span> <span class="n">glacier</span><span class="o">.</span><span class="n">bed</span><span class="o">.</span><span class="n">widths</span> <span class="o">*</span> <span class="n">glacier</span><span class="o">.</span><span class="n">bed</span><span class="o">.</span><span class="n">map_dx</span> <span class="o">*</span>\
+        <span class="n">glacier</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">dx_meter</span>
+<span class="c1"># Integration</span>
+<span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="n">mb</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">glacier</span><span class="o">.</span><span class="n">bed</span><span class="o">.</span><span class="n">distance_along_glacier</span><span class="p">[</span><span class="n">q</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">q</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># Add a vertical line indicating the ELA x location.</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mb</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">glacier</span><span class="o">.</span><span class="n">bed</span><span class="o">.</span><span class="n">distance_along_glacier</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">glacier</span><span class="o">.</span><span class="n">bed</span><span class="o">.</span><span class="n">distance_along_glacier</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;ELA&#39;</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Distance along glacier [km]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Ice flux $q$ (m$^3$ s$^{-1}$)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Por construcción, el flujo de hielo es máximo en la altitud de la línea de equilibrio y cero en el extremo del glaciar.</p>
+</div>
+</div>
+<div class="section" id="llevate-puntos-a-casa">
+<h2>Llévate puntos a casa<a class="headerlink" href="#llevate-puntos-a-casa" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Los procesos de acumulación incluyen todos los procesos que añaden nieve o hielo a un glaciar, p.</p></li>
+<li><p>Precipitación sólida</p></li>
+<li><p>Redistribución de la nieve por viento y avalancha</p></li>
+<li><p>Recongelación del agua de deshielo</p></li>
+<li><p>Resublimación y lluvia helada</p></li>
+<li><p>Los procesos de ablación son todos los procesos que eliminan la nieve o el hielo de un glaciar, p.</p></li>
+<li><p>Derretimiento y escorrentía</p></li>
+<li><p>Sublimación</p></li>
+<li><p>Parto</p></li>
+<li><p>Las tasas de acumulación y ablación determinan el balance de masa del glaciar, es decir, el cambio en la masa total de nieve y hielo.</p></li>
+<li><p>Los glaciares fluyen por gravedad</p></li>
+<li><p>La conservación de masa implica un vínculo entre el espesor del hielo, el balance de masa y el flujo de hielo</p></li>
+</ul>
+</div>
+<div class="section" id="referencias">
+<h2>Referencias<a class="headerlink" href="#referencias" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>K. M. Cuffey y WSB Paterson, (2010), <a class="reference external" href="https://www.elsevier.com/books/the-physics-of-glaciers/cuffey/978-0-12-369461-4">The Physics of Glaciers</a></p></li>
+<li><p><a class="reference external" href="http://AntarcticGlaciers.org">AntarcticGlaciers.org</a>, <a class="reference external" href="http://www.antarcticglaciers.org/glacier-processes/mass-balance/">glacier mass-balance</a></p></li>
+</ul>
+</div>
+<div class="section" id="que-sigue">
+<h2>¿Que sigue?<a class="headerlink" href="#que-sigue" title="Permalink to this headline">¶</a></h2>
+<p>xx_markdown_enlace_xx</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./oggm-edu-es"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="temperature_index_model_es.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Modelos de índice de temperatura</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="advance_and_retreat_es.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Avance y retroceso de los glaciares</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By OGGM e.V. y contribudores OGGM<br/>
+    
+      <div class="extra_footer">
+        <p>
+These notebooks are licensed under a <a href="https://github.com/OGGM/tutorials/blob/master/LICENSE.txt" target="_blank">BSD-3-Clause license</a>.
+<br>
+&copy; Copyright 2014-2022.
+</p>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
